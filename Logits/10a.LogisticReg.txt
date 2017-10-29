@@ -1,0 +1,26 @@
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	polactivity	ME	polactivity	ME
+					
+gutt_instrust3	Political Trust-Guttman	0.216***	0.046***	0.212***	0.045***
+		(0.007)	(0.001)	(0.007)	(0.001)
+gutt_instrust3_sq	Squared Political Trust	-0.008***	-0.002***	-0.008***	-0.002***
+		(0.000)	(0.000)	(0.000)	(0.000)
+DWave_5	W.2010-2014			-0.257***	-0.054***
+				(0.024)	(0.005)
+DWave_4	W.2005-2009			0.141***	0.031***
+				(0.025)	(0.005)
+DWave_3	W.1999-2004			-0.022	-0.005
+				(0.025)	(0.005)
+DWave_2	W.1994-1998			0.154***	0.033***
+				(0.024)	(0.005)
+o.DWave_1	W.1989-1993 = o,			-	
+					
+Constant	Constant	-2.088***		-2.068***	
+		(0.047)		(0.053)	
+					
+Observations		234,567	234,567	234,567	234,567
+Wald Chi2		1584		3003	
+Prob>Chi2		0		0	
+Pseudo R-squared		0.00573		0.0108	
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					

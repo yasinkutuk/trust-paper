@@ -1,0 +1,26 @@
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	Political Action-Guttman	ME	Political Action-Guttman	ME
+					
+gutt_instrust3	Political Trust-Guttman-Imputed	0.032***	0.197***	0.029***	0.182***
+		(0.001)	(0.008)	(0.001)	(0.008)
+gutt_instrust3_sq	Squared Political Trust	-0.001***	-0.008***	-0.001***	-0.007***
+		(0.000)	(0.000)	(0.000)	(0.000)
+DWave_5	W.2010-2014			-0.069***	-0.428***
+				(0.004)	(0.027)
+DWave_4	W.2005-2009			-0.471***	-2.345***
+				(0.004)	(0.017)
+DWave_3	W.1999-2004			-0.055***	-0.338***
+				(0.005)	(0.027)
+DWave_2	W.1994-1998			-0.017***	-0.104***
+				(0.004)	(0.027)
+o.DWave_1	W.1989-1993 = o,			-	
+					
+Constant	Constant	1.644***		1.702***	
+		(0.009)		(0.010)	
+					
+Observations		157,158	157,158	157,158	157,158
+Wald Chi2		1130		137744	
+Prob>Chi2		0		0	
+Pseudo R-squared		0.00120		0.00319	
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					

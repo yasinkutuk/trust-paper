@@ -1,0 +1,2076 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01.Outputs.txt
+  log type:  text
+ opened on:  16 Sep 2017, 11:40:52
+
+. 
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx2
+
+Computing marginal effects after poisson for gutt_action...
+
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+Preparing final results...
+
+
+Original results are now active. mfx results are stored as poisson_mfx.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Model poisson_mfx (Marginal effects after poisson)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |    .197071   .0077478    25.44   0.000     .1818856    .2122564
+gutt_instrust3_sq |  -.0075075     .00026   -28.88   0.000     -.008017    -.006998
+-----------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, auto(3) replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, auto(3) tex ctitle(ME) label cttop(mfx)
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model, Wave Effect
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -340490.81  
+Iteration 1:   log pseudolikelihood = -340490.79  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  137744.08
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -340490.79               Pseudo R2         =     0.0032
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0292476   .0012432    23.53   0.000      .026811    .0316842
+gutt_instrust3_sq |  -.0010974   .0000417   -26.29   0.000    -.0011792   -.0010156
+          DWave_5 |  -.0691972   .0044148   -15.67   0.000    -.0778501   -.0605444
+          DWave_4 |  -.4710969   .0043283  -108.84   0.000    -.4795803   -.4626135
+          DWave_3 |  -.0551394   .0045352   -12.16   0.000    -.0640283   -.0462504
+          DWave_2 |  -.0168386   .0044163    -3.81   0.000    -.0254944   -.0081828
+          DWave_1 |          0  (omitted)
+            _cons |   1.701696   .0099768   170.56   0.000     1.682142     1.72125
+-----------------------------------------------------------------------------------
+
+. mfx2
+
+Computing marginal effects after poisson for gutt_action...
+
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2233131
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1820172      .00773   23.54   0.000   .166863  .197172   14.5692
+gut~3_sq |  -.0068293      .00026  -26.30   0.000  -.007338  -.00632   228.963
+ DWave_5*|  -.4275524      .02708  -15.79   0.000  -.480632 -.374473    .39326
+ DWave_4*|  -2.344526      .01742 -134.57   0.000  -2.37867 -2.31038   .005924
+ DWave_3*|  -.3381303      .02741  -12.34   0.000  -.391848 -.284413   .230475
+ DWave_2*|  -.1044916      .02733   -3.82   0.000  -.158054 -.050929   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+Preparing final results...
+
+
+Original results are now active. mfx results are stored as poisson_mfx.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Model poisson_mfx (Marginal effects after poisson)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .1820172    .007732    23.54   0.000     .1668629    .1971716
+gutt_instrust3_sq |  -.0068293   .0002596   -26.30   0.000    -.0073382   -.0063204
+          DWave_5 |  -.4275524   .0270817   -15.79   0.000    -.4806316   -.3744732
+          DWave_4 |  -2.344526   .0174224  -134.57   0.000    -2.378674   -2.310379
+          DWave_3 |  -.3381303   .0274074   -12.34   0.000    -.3918478   -.2844128
+          DWave_2 |  -.1044916   .0273284    -3.82   0.000    -.1580543   -.0509288
+-----------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, auto(3) label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, auto(3) tex ctitle(ME) label cttop(mfx)
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. drop DWave-
+DWave ambiguous abbreviation
+r(111);
+
+. drop DWave*
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. //Manual base settings for dummies
+. global dwave DWave_5 DWave_4 DWave_3 DWave_2 DWave_1
+
+. global dcountry  DCountry_80     DCountry_79     DCountry_78     DCountry_77     DCountry_76     DCountry_75     DCountry_74     DCountry_73     DCountry_72     DCou
+> ntry_71     DCountry_70     DCountry_69     DCountry_68     DCountry_67     DCountry_66     DCountry_65     DCountry_64     DCountry_63     DCountry_62     DCountry_
+> 61     DCountry_60     DCountry_59     DCountry_58     DCountry_57     DCountry_56     DCountry_55     DCountry_54     DCountry_53     DCountry_52     DCountry_51   
+>   DCountry_50     DCountry_49     DCountry_48     DCountry_47     DCountry_46     DCountry_45     DCountry_44     DCountry_43     DCountry_42     DCountry_41     DCo
+> untry_40     DCountry_39     DCountry_38     DCountry_37     DCountry_36     DCountry_35     DCountry_34     DCountry_33     DCountry_32     DCountry_31     DCountry
+> _30     DCountry_29     DCountry_28     DCountry_27     DCountry_26     DCountry_25     DCountry_24     DCountry_23     DCountry_22     DCountry_21     DCountry_20  
+>    DCountry_19     DCountry_18     DCountry_17     DCountry_16     DCountry_15     DCountry_14     DCountry_13     DCountry_12     DCountry_11     DCountry_10     DC
+> ountry_9      DCountry_8      DCountry_7      DCountry_6      DCountry_5      DCountry_4      DCountry_3      DCountry_2      DCountry_1
+
+. global dType DType_0 DType_1 DType_2
+
+. 
+. //Labelling again
+. label variable DWave_1 "W.1989-1993"
+variable DWave_1 not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. tab Wave, gen(DWave_)
+
+               Wave |      Freq.     Percent        Cum.
+--------------------+-----------------------------------
+          1989-1993 |     24,558        8.26        8.26
+          1994-1998 |     73,872       24.83       33.09
+          1999-2004 |     53,076       17.84       50.93
+          2005-2009 |     68,743       23.11       74.04
+          2010-2014 |     77,210       25.96      100.00
+--------------------+-----------------------------------
+              Total |    297,459      100.00
+
+. 
+end of do-file
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. //Labelling again
+. label variable DWave_1 "W.1989-1993"
+
+. label variable DWave_2 "W.1994-1998"
+
+. label variable DWave_3 "W.1999-2004"
+
+. label variable DWave_4 "W.2005-2009"
+
+. label variable DWave_5 "W.2010-2014"
+
+. 
+end of do-file
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, auto(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, auto(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. shellout using `"D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex"'
+
+. shellout using `"D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex"'
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(2) pdec(3) side tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(2) pdec(3) side tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. shellout using `"D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex"'
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(2) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(2) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. shellout using `"D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex"'
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model, Wave Effect
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -340490.81  
+Iteration 1:   log pseudolikelihood = -340490.79  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  137744.08
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -340490.79               Pseudo R2         =     0.0032
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0292476   .0012432    23.53   0.000      .026811    .0316842
+gutt_instrust3_sq |  -.0010974   .0000417   -26.29   0.000    -.0011792   -.0010156
+          DWave_5 |  -.0691972   .0044148   -15.67   0.000    -.0778501   -.0605444
+          DWave_4 |  -.4710969   .0043283  -108.84   0.000    -.4795803   -.4626135
+          DWave_3 |  -.0551394   .0045352   -12.16   0.000    -.0640283   -.0462504
+          DWave_2 |  -.0168386   .0044163    -3.81   0.000    -.0254944   -.0081828
+          DWave_1 |          0  (omitted)
+            _cons |   1.701696   .0099768   170.56   0.000     1.682142     1.72125
+-----------------------------------------------------------------------------------
+
+. mfx2
+
+Computing marginal effects after poisson for gutt_action...
+
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2233131
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1820172      .00773   23.54   0.000   .166863  .197172   14.5692
+gut~3_sq |  -.0068293      .00026  -26.30   0.000  -.007338  -.00632   228.963
+ DWave_5*|  -.4275524      .02708  -15.79   0.000  -.480632 -.374473    .39326
+ DWave_4*|  -2.344526      .01742 -134.57   0.000  -2.37867 -2.31038   .005924
+ DWave_3*|  -.3381303      .02741  -12.34   0.000  -.391848 -.284413   .230475
+ DWave_2*|  -.1044916      .02733   -3.82   0.000  -.158054 -.050929   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+Preparing final results...
+
+
+Original results are now active. mfx results are stored as poisson_mfx.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Model poisson_mfx (Marginal effects after poisson)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .1820172    .007732    23.54   0.000     .1668629    .1971716
+gutt_instrust3_sq |  -.0068293   .0002596   -26.30   0.000    -.0073382   -.0063204
+          DWave_5 |  -.4275524   .0270817   -15.79   0.000    -.4806316   -.3744732
+          DWave_4 |  -2.344526   .0174224  -134.57   0.000    -2.378674   -2.310379
+          DWave_3 |  -.3381303   .0274074   -12.34   0.000    -.3918478   -.2844128
+          DWave_2 |  -.1044916   .0273284    -3.82   0.000    -.1580543   -.0509288
+-----------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+run {cmd mfx} first
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model, Wave Effect
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -340490.81  
+Iteration 1:   log pseudolikelihood = -340490.79  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  137744.08
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -340490.79               Pseudo R2         =     0.0032
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0292476   .0012432    23.53   0.000      .026811    .0316842
+gutt_instrust3_sq |  -.0010974   .0000417   -26.29   0.000    -.0011792   -.0010156
+          DWave_5 |  -.0691972   .0044148   -15.67   0.000    -.0778501   -.0605444
+          DWave_4 |  -.4710969   .0043283  -108.84   0.000    -.4795803   -.4626135
+          DWave_3 |  -.0551394   .0045352   -12.16   0.000    -.0640283   -.0462504
+          DWave_2 |  -.0168386   .0044163    -3.81   0.000    -.0254944   -.0081828
+          DWave_1 |          0  (omitted)
+            _cons |   1.701696   .0099768   170.56   0.000     1.682142     1.72125
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2233131
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1820172      .00773   23.54   0.000   .166863  .197172   14.5692
+gut~3_sq |  -.0068293      .00026  -26.30   0.000  -.007338  -.00632   228.963
+ DWave_5*|  -.4275524      .02708  -15.79   0.000  -.480632 -.374473    .39326
+ DWave_4*|  -2.344526      .01742 -134.57   0.000  -2.37867 -2.31038   .005924
+ DWave_3*|  -.3381303      .02741  -12.34   0.000  -.391848 -.284413   .230475
+ DWave_2*|  -.1044916      .02733   -3.82   0.000  -.158054 -.050929   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. shellout using `"D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex"'
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. *Basic Model
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -341168.77  
+Iteration 1:   log pseudolikelihood = -341168.77  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1130.33
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -341168.77               Pseudo R2         =     0.0012
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0316426   .0012449    25.42   0.000     .0292026    .0340826
+gutt_instrust3_sq |  -.0012054   .0000418   -28.86   0.000    -.0012873   -.0011236
+            _cons |   1.644054   .0089564   183.56   0.000       1.6265    1.661608
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2280304
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .197071      .00775   25.44   0.000   .181886  .212256   14.5692
+gut~3_sq |  -.0075075      .00026  -28.88   0.000  -.008017 -.006998   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model, Wave Effect
+. display as text "***Model 01a"
+***Model 01a
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -340490.81  
+Iteration 1:   log pseudolikelihood = -340490.79  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  137744.08
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -340490.79               Pseudo R2         =     0.0032
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0292476   .0012432    23.53   0.000      .026811    .0316842
+gutt_instrust3_sq |  -.0010974   .0000417   -26.29   0.000    -.0011792   -.0010156
+          DWave_5 |  -.0691972   .0044148   -15.67   0.000    -.0778501   -.0605444
+          DWave_4 |  -.4710969   .0043283  -108.84   0.000    -.4795803   -.4626135
+          DWave_3 |  -.0551394   .0045352   -12.16   0.000    -.0640283   -.0462504
+          DWave_2 |  -.0168386   .0044163    -3.81   0.000    -.0254944   -.0081828
+          DWave_1 |          0  (omitted)
+            _cons |   1.701696   .0099768   170.56   0.000     1.682142     1.72125
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2233131
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1820172      .00773   23.54   0.000   .166863  .197172   14.5692
+gut~3_sq |  -.0068293      .00026  -26.30   0.000  -.007338  -.00632   228.963
+ DWave_5*|  -.4275524      .02708  -15.79   0.000  -.480632 -.374473    .39326
+ DWave_4*|  -2.344526      .01742 -134.57   0.000  -2.37867 -2.31038   .005924
+ DWave_3*|  -.3381303      .02741  -12.34   0.000  -.391848 -.284413   .230475
+ DWave_2*|  -.1044916      .02733   -3.82   0.000  -.158054 -.050929   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01a.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. *Basic Model, Wave Effect, Type Effect
+. display as text "***Model 01b"
+***Model 01b
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave $dtype, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -340490.81  
+Iteration 1:   log pseudolikelihood = -340490.79  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  137744.08
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -340490.79               Pseudo R2         =     0.0032
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0292476   .0012432    23.53   0.000      .026811    .0316842
+gutt_instrust3_sq |  -.0010974   .0000417   -26.29   0.000    -.0011792   -.0010156
+          DWave_5 |  -.0691972   .0044148   -15.67   0.000    -.0778501   -.0605444
+          DWave_4 |  -.4710969   .0043283  -108.84   0.000    -.4795803   -.4626135
+          DWave_3 |  -.0551394   .0045352   -12.16   0.000    -.0640283   -.0462504
+          DWave_2 |  -.0168386   .0044163    -3.81   0.000    -.0254944   -.0081828
+          DWave_1 |          0  (omitted)
+            _cons |   1.701696   .0099768   170.56   0.000     1.682142     1.72125
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2233131
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1820172      .00773   23.54   0.000   .166863  .197172   14.5692
+gut~3_sq |  -.0068293      .00026  -26.30   0.000  -.007338  -.00632   228.963
+ DWave_5*|  -.4275524      .02708  -15.79   0.000  -.480632 -.374473    .39326
+ DWave_4*|  -2.344526      .01742 -134.57   0.000  -2.37867 -2.31038   .005924
+ DWave_3*|  -.3381303      .02741  -12.34   0.000  -.391848 -.284413   .230475
+ DWave_2*|  -.1044916      .02733   -3.82   0.000  -.158054 -.050929   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model, Wave Effect, Country Effect
+. display as text "***Model 01b"
+***Model 01b
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave $dcountry , robust
+note: DWave_1 omitted because of collinearity
+note: DCountry_60 omitted because of collinearity
+note: DCountry_33 omitted because of collinearity
+note: DCountry_23 omitted because of collinearity
+note: DCountry_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -332117.03  
+Iteration 1:   log pseudolikelihood = -332116.99  
+Iteration 2:   log pseudolikelihood = -332116.99  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(82)     =   82757.12
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -332116.99               Pseudo R2         =     0.0277
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0098914   .0012227     8.09   0.000      .007495    .0122879
+gutt_instrust3_sq |  -.0004335    .000041   -10.57   0.000    -.0005139   -.0003531
+          DWave_5 |  -.0195009   .0050654    -3.85   0.000    -.0294289   -.0095728
+          DWave_4 |  -.3432628   .0071074   -48.30   0.000     -.357193   -.3293326
+          DWave_3 |  -.0218333   .0051907    -4.21   0.000    -.0320068   -.0116598
+          DWave_2 |   -.015592   .0050778    -3.07   0.002    -.0255444   -.0056397
+          DWave_1 |          0  (omitted)
+      DCountry_80 |  -.0607599   .0116334    -5.22   0.000    -.0835609   -.0379588
+      DCountry_79 |  -.1011096   .0108005    -9.36   0.000    -.1222782   -.0799411
+      DCountry_78 |  -.1014782    .018682    -5.43   0.000    -.1380943   -.0648622
+      DCountry_77 |  -.1258367   .0126454    -9.95   0.000    -.1506213   -.1010522
+      DCountry_76 |  -.1049187   .0107308    -9.78   0.000    -.1259506   -.0838868
+      DCountry_75 |   .2350005   .0098039    23.97   0.000     .2157851    .2542159
+      DCountry_74 |  -.1509052   .0108926   -13.85   0.000    -.1722543   -.1295561
+      DCountry_73 |   .0906273   .0154406     5.87   0.000     .0603644    .1208902
+      DCountry_72 |  -.0536132   .0100211    -5.35   0.000    -.0732542   -.0339722
+      DCountry_71 |  -.1577465   .0146699   -10.75   0.000    -.1864989   -.1289941
+      DCountry_70 |  -.0988702   .0151959    -6.51   0.000    -.1286536   -.0690867
+      DCountry_69 |   .0288775   .0119627     2.41   0.016      .005431    .0523241
+      DCountry_68 |  -.1271946   .0118569   -10.73   0.000    -.1504336   -.1039555
+      DCountry_67 |   .1211374   .0128751     9.41   0.000     .0959028    .1463721
+      DCountry_66 |   .3098976   .0104539    29.64   0.000     .2894082    .3303869
+      DCountry_65 |   .0425414   .0108593     3.92   0.000     .0212575    .0638253
+      DCountry_64 |   .1535499   .0104219    14.73   0.000     .1331233    .1739764
+      DCountry_63 |   .0146962   .0099139     1.48   0.138    -.0047346    .0341271
+      DCountry_62 |   .0674188   .0118261     5.70   0.000       .04424    .0905976
+      DCountry_61 |   .0884075   .0142999     6.18   0.000     .0603802    .1164348
+      DCountry_60 |          0  (omitted)
+      DCountry_59 |   .0515637   .0122924     4.19   0.000      .027471    .0756564
+      DCountry_58 |  -.0362131    .012135    -2.98   0.003    -.0599973   -.0124289
+      DCountry_57 |  -.1156194   .0107272   -10.78   0.000    -.1366443   -.0945946
+      DCountry_56 |  -.0506007    .011459    -4.42   0.000    -.0730599   -.0281415
+      DCountry_55 |  -.0060631   .0122461    -0.50   0.621     -.030065    .0179388
+      DCountry_54 |  -.1905442   .0107089   -17.79   0.000    -.2115333   -.1695551
+      DCountry_53 |   .0107065   .0103823     1.03   0.302    -.0096424    .0310553
+      DCountry_52 |  -.1490304   .0118109   -12.62   0.000    -.1721793   -.1258815
+      DCountry_51 |   .2403721   .0116696    20.60   0.000     .2175001    .2632442
+      DCountry_50 |  -.0280553   .0100712    -2.79   0.005    -.0477945   -.0083161
+      DCountry_49 |   .2895653    .010904    26.56   0.000     .2681938    .3109368
+      DCountry_48 |   .1601036   .0113725    14.08   0.000      .137814    .1823933
+      DCountry_47 |  -.1609666   .0120505   -13.36   0.000    -.1845852   -.1373481
+      DCountry_46 |   .1163831   .0151956     7.66   0.000     .0866003    .1461659
+      DCountry_45 |  -.1109323   .0122382    -9.06   0.000    -.1349188   -.0869459
+      DCountry_44 |   .0105548   .0099735     1.06   0.290    -.0089928    .0301025
+      DCountry_43 |   -.311759   .0119043   -26.19   0.000    -.3350909    -.288427
+      DCountry_42 |   .0596994   .0120102     4.97   0.000     .0361598     .083239
+      DCountry_41 |   .0238252   .0167468     1.42   0.155    -.0089979    .0566484
+      DCountry_40 |  -.0849897   .0127412    -6.67   0.000     -.109962   -.0600175
+      DCountry_39 |  -.0204397   .0157207    -1.30   0.194    -.0512518    .0103724
+      DCountry_38 |   .0568245   .0131777     4.31   0.000     .0309967    .0826522
+      DCountry_37 |  -.2142807   .0110028   -19.48   0.000    -.2358459   -.1927156
+      DCountry_36 |  -.2810982   .0116265   -24.18   0.000    -.3038857   -.2583107
+      DCountry_35 |   -.261508   .0113428   -23.06   0.000    -.2837394   -.2392765
+      DCountry_34 |   .0826003   .0106407     7.76   0.000     .0617449    .1034556
+      DCountry_33 |          0  (omitted)
+      DCountry_32 |   -.090876   .0145021    -6.27   0.000    -.1192996   -.0624523
+      DCountry_31 |  -.1855137    .014515   -12.78   0.000    -.2139626   -.1570649
+      DCountry_30 |   .1116545    .010114    11.04   0.000     .0918313    .1314776
+      DCountry_29 |   .0199145   .0150284     1.33   0.185    -.0095405    .0493696
+      DCountry_28 |  -.1516934   .0120514   -12.59   0.000    -.1753137   -.1280732
+      DCountry_27 |   .1993419   .0101317    19.68   0.000     .1794841    .2191998
+      DCountry_26 |  -.1440153   .0116071   -12.41   0.000    -.1667649   -.1212658
+      DCountry_25 |   .1126352   .0133138     8.46   0.000     .0865406    .1387299
+      DCountry_24 |  -.0445607   .0115853    -3.85   0.000    -.0672675    -.021854
+      DCountry_23 |          0  (omitted)
+      DCountry_22 |   -.017299   .0110466    -1.57   0.117    -.0389499    .0043519
+      DCountry_21 |  -.2029647   .0132765   -15.29   0.000    -.2289862   -.1769432
+      DCountry_20 |   .0336505   .0185648     1.81   0.070    -.0027359    .0700369
+      DCountry_19 |   .0930542    .013453     6.92   0.000     .0666868    .1194216
+      DCountry_18 |   .1081066    .014428     7.49   0.000     .0798282     .136385
+      DCountry_17 |   .1462367   .0123924    11.80   0.000     .1219481    .1705254
+      DCountry_16 |  -.0065359   .0104083    -0.63   0.530    -.0269359     .013864
+      DCountry_15 |   -.085415   .0120963    -7.06   0.000    -.1091233   -.0617067
+      DCountry_14 |  -.0457646   .0107409    -4.26   0.000    -.0668163   -.0247129
+      DCountry_13 |   .2202259   .0110603    19.91   0.000     .1985482    .2419036
+      DCountry_12 |  -.0976573   .0116909    -8.35   0.000     -.120571   -.0747436
+      DCountry_11 |  -.0571478   .0169533    -3.37   0.001    -.0903757     -.02392
+      DCountry_10 |   .1022055   .0125596     8.14   0.000      .077589     .126822
+       DCountry_9 |    .098238   .0144025     6.82   0.000     .0700096    .1264664
+       DCountry_8 |  -.0866227   .0125905    -6.88   0.000    -.1112997   -.0619458
+       DCountry_7 |   .0856482   .0120722     7.09   0.000     .0619872    .1093093
+       DCountry_6 |  -.2078518   .0116725   -17.81   0.000    -.2307295   -.1849741
+       DCountry_5 |   .2530595    .010121    25.00   0.000     .2332226    .2728963
+       DCountry_4 |  -.0497324   .0118218    -4.21   0.000    -.0729028   -.0265621
+       DCountry_3 |   -.034503   .0110163    -3.13   0.002    -.0560947   -.0129114
+       DCountry_2 |   .0037458   .0131019     0.29   0.775    -.0219336    .0294251
+       DCountry_1 |          0  (omitted)
+            _cons |   1.800343   .0138147   130.32   0.000     1.773267    1.827419
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.1707954
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .061038      .00754    8.09   0.000   .046256   .07582   14.5692
+gut~3_sq |  -.0026748      .00025  -10.57   0.000  -.003171 -.002179   228.963
+ DWave_5*|  -.1200875      .03113   -3.86   0.000  -.181099 -.059076    .39326
+ DWave_4*|  -1.796563      .03142  -57.18   0.000  -1.85815 -1.73498   .005924
+ DWave_3*|  -.1339412      .03166   -4.23   0.000  -.195993 -.071889   .230475
+ DWave_2*|    -.09596      .03117   -3.08   0.002  -.157051 -.034868   .328905
+DCoun~80*|  -.3640831      .06774   -5.37   0.000  -.496855 -.231312   .014005
+DCoun~79*|  -.5934314      .06037   -9.83   0.000   -.71176 -.475103   .000172
+DCoun~78*|  -.5956897       .1043   -5.71   0.000  -.800118 -.391262   .003525
+DCoun~77*|  -.7301454      .06905  -10.57   0.000  -.865479 -.594812   .005479
+DCoun~76*|  -.6154918      .05994  -10.27   0.000  -.732967 -.498017   .013426
+DCoun~75*|   1.623765      .07515   21.61   0.000   1.47647  1.77106   .028564
+DCoun~74*|  -.8670438      .05836  -14.86   0.000  -.981421 -.752666   .020635
+DCoun~73*|   .5851562      .10416    5.62   0.000   .381002  .789311   .003977
+DCoun~72*|   -.322836      .05894   -5.48   0.000  -.438361 -.207311   .041188
+DCoun~71*|   -.901398      .07761  -11.61   0.000  -1.05351 -.749288   .006128
+DCoun~70*|   -.581305      .08514   -6.83   0.000   -.74817  -.41444   .006758
+DCoun~69*|   .1807622      .07592    2.38   0.017   .031967  .329557   .006344
+DCoun~68*|  -.7380552      .06476  -11.40   0.000  -.864981  -.61113   .010976
+DCoun~67*|   .7941058      .08941    8.88   0.000   .618862   .96935   .005918
+DCoun~66*|   2.233284      .08679   25.73   0.000   2.06317  2.40339   .012223
+DCoun~65*|   .2679056      .06973    3.84   0.000   .131236  .404576   .023919
+DCoun~64*|   1.021017      .07432   13.74   0.000   .875361  1.16667   .019897
+DCoun~63*|   .0912943      .06198    1.47   0.141  -.030179  .212768   .046711
+DCoun~62*|   .4300464      .07787    5.52   0.000    .27743  .582663   .011231
+DCoun~61*|   .5701271      .09622    5.93   0.000   .381532  .758722   .005148
+DCoun~59*|   .3263333      .07972    4.09   0.000   .170092  .482574   .012001
+DCoun~58*|  -.2195431      .07231   -3.04   0.002  -.361275 -.077811   .009716
+DCoun~57*|  -.6754807      .05942  -11.37   0.000  -.791945 -.559016   .022016
+DCoun~56*|  -.3046816      .06738   -4.52   0.000  -.436735 -.172629   .013191
+DCoun~55*|  -.0373032      .07512   -0.50   0.620  -.184545  .109938   .009475
+DCoun~54*|  -1.074969      .05532  -19.43   0.000  -1.18339  -.96655   .021488
+DCoun~53*|   .0664079      .06471    1.03   0.305  -.060427  .193242   .020406
+DCoun~52*|  -.8563531      .06324  -13.54   0.000  -.980304 -.732402   .015399
+DCoun~51*|   1.673957      .09095   18.41   0.000   1.49571  1.85221   .006917
+DCoun~50*|  -.1708988       .0606   -2.82   0.005  -.289664 -.052134   .037847
+DCoun~49*|    2.06722      .08899   23.23   0.000   1.89281  2.24163   .008711
+DCoun~48*|   1.069687      .08187   13.07   0.000   .909224  1.23015   .010289
+DCoun~47*|  -.9191856      .06373  -14.42   0.000  -1.04408 -.794287     .0116
+DCoun~46*|   .7612108      .10512    7.24   0.000   .555177  .967245   .004817
+DCoun~45*|  -.6486497      .06786   -9.56   0.000  -.781657 -.515643   .009901
+DCoun~44*|   .0654501      .06213    1.05   0.292  -.056326  .187226   .038503
+DCoun~43*|  -1.657105      .05445  -30.43   0.000  -1.76383 -1.55038   .008348
+DCoun~42*|   .3793729       .0785    4.83   0.000   .225508  .533237   .010531
+DCoun~41*|   .1487735       .1058    1.41   0.160  -.058588  .356135   .003519
+DCoun~40*|  -.5032058      .07243   -6.95   0.000  -.645166 -.361246   .009825
+DCoun~39*|  -.1248615      .09508   -1.31   0.189  -.311222  .061499    .00488
+DCoun~38*|   .3606828      .08595    4.20   0.000   .192226   .52914   .006032
+DCoun~37*|  -1.194206      .05545  -21.54   0.000  -1.30289 -1.08552   .015634
+DCoun~36*|   -1.51619      .05482  -27.66   0.000  -1.62363 -1.40875   .009545
+DCoun~35*|  -1.424981       .0546  -26.10   0.000  -1.53199 -1.31797    .01349
+DCoun~34*|   .5306438      .07101    7.47   0.000   .391466  .669821   .016156
+DCoun~32*|  -.5363462      .08189   -6.55   0.000   -.69685 -.375842   .006058
+DCoun~31*|  -1.045856      .07471  -14.00   0.000  -1.19229 -.899418    .00516
+DCoun~30*|    .725881      .06905   10.51   0.000   .590538  .861224   .037593
+DCoun~29*|   .1241115      .09457    1.31   0.189  -.061246  .309469   .003589
+DCoun~28*|  -.8698674      .06428  -13.53   0.000  -.995849 -.743885   .010149
+DCoun~27*|   1.355119      .07533   17.99   0.000   1.20747  1.50277   .022729
+DCoun~26*|  -.8297989       .0625  -13.28   0.000  -.952293 -.707305   .017912
+DCoun~25*|   .7352415      .09171    8.02   0.000   .555487  .914996   .005587
+DCoun~24*|  -.2691024      .06851   -3.93   0.000  -.403382 -.134823   .013661
+DCoun~22*|  -.1058575      .06705   -1.58   0.114  -.237279  .025564    .01473
+DCoun~21*|  -1.135281       .0673  -16.87   0.000  -1.26718 -1.00338   .007597
+DCoun~20*|   .2111703      .11844    1.78   0.075  -.020967  .443308   .001877
+DCoun~19*|   .6014838      .09092    6.62   0.000   .423287   .77968   .005351
+DCoun~18*|   .7040386      .09896    7.11   0.000   .510072  .898006   .006032
+DCoun~17*|   .9708305      .08817   11.01   0.000    .79802  1.14364   .006236
+DCoun~16*|  -.0402069      .06384   -0.63   0.529  -.165328  .084914   .024517
+DCoun~15*|  -.5057134      .06877   -7.35   0.000  -.640502 -.370924   .011994
+DCoun~14*|  -.2763778      .06353   -4.35   0.000  -.400887 -.151869   .026769
+DCoun~13*|   1.516543      .08435   17.98   0.000   1.35122  1.68187   .011014
+DCoun~12*|  -.5741357      .06555   -8.76   0.000  -.702611  -.44566   .000051
+DCoun~11*|  -.3428332      .09889   -3.47   0.001  -.536655 -.149012   .003729
+DCoun~10*|   .6635214      .08558    7.75   0.000    .49578  .831263   .007731
+DCoun~_9*|    .636689      .09786    6.51   0.000   .444884  .828495    .00469
+DCoun~_8*|  -.5124376      .07145   -7.17   0.000  -.652481 -.372394   .009093
+DCoun~_7*|   .5511693      .08088    6.81   0.000   .392642  .709696   .013591
+DCoun~_6*|  -1.161794      .05912  -19.65   0.000  -1.27767 -1.04591   .015367
+DCoun~_5*|   1.767749      .07923   22.31   0.000   1.61246  1.92304   .020495
+DCoun~_4*|   -.299632      .06958   -4.31   0.000  -.436004  -.16326   .016754
+DCoun~_3*|   -.209406       .0658   -3.18   0.001  -.338366 -.080446   .017447
+DCoun~_2*|   .0231569      .08114    0.29   0.775  -.135884  .182198   .009455
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. 
+. 
+end of do-file
+
+. shellout using `"D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex"'
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. *Basic Model, Wave Effect, Type Effect
+. display as text "***Model 01b"
+***Model 01b
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave $dtype, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -340490.81  
+Iteration 1:   log pseudolikelihood = -340490.79  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  137744.08
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -340490.79               Pseudo R2         =     0.0032
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0292476   .0012432    23.53   0.000      .026811    .0316842
+gutt_instrust3_sq |  -.0010974   .0000417   -26.29   0.000    -.0011792   -.0010156
+          DWave_5 |  -.0691972   .0044148   -15.67   0.000    -.0778501   -.0605444
+          DWave_4 |  -.4710969   .0043283  -108.84   0.000    -.4795803   -.4626135
+          DWave_3 |  -.0551394   .0045352   -12.16   0.000    -.0640283   -.0462504
+          DWave_2 |  -.0168386   .0044163    -3.81   0.000    -.0254944   -.0081828
+          DWave_1 |          0  (omitted)
+            _cons |   1.701696   .0099768   170.56   0.000     1.682142     1.72125
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.2233131
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1820172      .00773   23.54   0.000   .166863  .197172   14.5692
+gut~3_sq |  -.0068293      .00026  -26.30   0.000  -.007338  -.00632   228.963
+ DWave_5*|  -.4275524      .02708  -15.79   0.000  -.480632 -.374473    .39326
+ DWave_4*|  -2.344526      .01742 -134.57   0.000  -2.37867 -2.31038   .005924
+ DWave_3*|  -.3381303      .02741  -12.34   0.000  -.391848 -.284413   .230475
+ DWave_2*|  -.1044916      .02733   -3.82   0.000  -.158054 -.050929   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model, Wave Effect, Country Effect
+. display as text "***Model 01b"
+***Model 01b
+
+. poisson gutt_action gutt_instrust3 gutt_instrust3_sq $dwave $dcountry , robust
+note: DWave_1 omitted because of collinearity
+note: DCountry_60 omitted because of collinearity
+note: DCountry_33 omitted because of collinearity
+note: DCountry_23 omitted because of collinearity
+note: DCountry_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -332117.03  
+Iteration 1:   log pseudolikelihood = -332116.99  
+Iteration 2:   log pseudolikelihood = -332116.99  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(82)     =   82757.12
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -332116.99               Pseudo R2         =     0.0277
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+      gutt_action |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0098914   .0012227     8.09   0.000      .007495    .0122879
+gutt_instrust3_sq |  -.0004335    .000041   -10.57   0.000    -.0005139   -.0003531
+          DWave_5 |  -.0195009   .0050654    -3.85   0.000    -.0294289   -.0095728
+          DWave_4 |  -.3432628   .0071074   -48.30   0.000     -.357193   -.3293326
+          DWave_3 |  -.0218333   .0051907    -4.21   0.000    -.0320068   -.0116598
+          DWave_2 |   -.015592   .0050778    -3.07   0.002    -.0255444   -.0056397
+          DWave_1 |          0  (omitted)
+      DCountry_80 |  -.0607599   .0116334    -5.22   0.000    -.0835609   -.0379588
+      DCountry_79 |  -.1011096   .0108005    -9.36   0.000    -.1222782   -.0799411
+      DCountry_78 |  -.1014782    .018682    -5.43   0.000    -.1380943   -.0648622
+      DCountry_77 |  -.1258367   .0126454    -9.95   0.000    -.1506213   -.1010522
+      DCountry_76 |  -.1049187   .0107308    -9.78   0.000    -.1259506   -.0838868
+      DCountry_75 |   .2350005   .0098039    23.97   0.000     .2157851    .2542159
+      DCountry_74 |  -.1509052   .0108926   -13.85   0.000    -.1722543   -.1295561
+      DCountry_73 |   .0906273   .0154406     5.87   0.000     .0603644    .1208902
+      DCountry_72 |  -.0536132   .0100211    -5.35   0.000    -.0732542   -.0339722
+      DCountry_71 |  -.1577465   .0146699   -10.75   0.000    -.1864989   -.1289941
+      DCountry_70 |  -.0988702   .0151959    -6.51   0.000    -.1286536   -.0690867
+      DCountry_69 |   .0288775   .0119627     2.41   0.016      .005431    .0523241
+      DCountry_68 |  -.1271946   .0118569   -10.73   0.000    -.1504336   -.1039555
+      DCountry_67 |   .1211374   .0128751     9.41   0.000     .0959028    .1463721
+      DCountry_66 |   .3098976   .0104539    29.64   0.000     .2894082    .3303869
+      DCountry_65 |   .0425414   .0108593     3.92   0.000     .0212575    .0638253
+      DCountry_64 |   .1535499   .0104219    14.73   0.000     .1331233    .1739764
+      DCountry_63 |   .0146962   .0099139     1.48   0.138    -.0047346    .0341271
+      DCountry_62 |   .0674188   .0118261     5.70   0.000       .04424    .0905976
+      DCountry_61 |   .0884075   .0142999     6.18   0.000     .0603802    .1164348
+      DCountry_60 |          0  (omitted)
+      DCountry_59 |   .0515637   .0122924     4.19   0.000      .027471    .0756564
+      DCountry_58 |  -.0362131    .012135    -2.98   0.003    -.0599973   -.0124289
+      DCountry_57 |  -.1156194   .0107272   -10.78   0.000    -.1366443   -.0945946
+      DCountry_56 |  -.0506007    .011459    -4.42   0.000    -.0730599   -.0281415
+      DCountry_55 |  -.0060631   .0122461    -0.50   0.621     -.030065    .0179388
+      DCountry_54 |  -.1905442   .0107089   -17.79   0.000    -.2115333   -.1695551
+      DCountry_53 |   .0107065   .0103823     1.03   0.302    -.0096424    .0310553
+      DCountry_52 |  -.1490304   .0118109   -12.62   0.000    -.1721793   -.1258815
+      DCountry_51 |   .2403721   .0116696    20.60   0.000     .2175001    .2632442
+      DCountry_50 |  -.0280553   .0100712    -2.79   0.005    -.0477945   -.0083161
+      DCountry_49 |   .2895653    .010904    26.56   0.000     .2681938    .3109368
+      DCountry_48 |   .1601036   .0113725    14.08   0.000      .137814    .1823933
+      DCountry_47 |  -.1609666   .0120505   -13.36   0.000    -.1845852   -.1373481
+      DCountry_46 |   .1163831   .0151956     7.66   0.000     .0866003    .1461659
+      DCountry_45 |  -.1109323   .0122382    -9.06   0.000    -.1349188   -.0869459
+      DCountry_44 |   .0105548   .0099735     1.06   0.290    -.0089928    .0301025
+      DCountry_43 |   -.311759   .0119043   -26.19   0.000    -.3350909    -.288427
+      DCountry_42 |   .0596994   .0120102     4.97   0.000     .0361598     .083239
+      DCountry_41 |   .0238252   .0167468     1.42   0.155    -.0089979    .0566484
+      DCountry_40 |  -.0849897   .0127412    -6.67   0.000     -.109962   -.0600175
+      DCountry_39 |  -.0204397   .0157207    -1.30   0.194    -.0512518    .0103724
+      DCountry_38 |   .0568245   .0131777     4.31   0.000     .0309967    .0826522
+      DCountry_37 |  -.2142807   .0110028   -19.48   0.000    -.2358459   -.1927156
+      DCountry_36 |  -.2810982   .0116265   -24.18   0.000    -.3038857   -.2583107
+      DCountry_35 |   -.261508   .0113428   -23.06   0.000    -.2837394   -.2392765
+      DCountry_34 |   .0826003   .0106407     7.76   0.000     .0617449    .1034556
+      DCountry_33 |          0  (omitted)
+      DCountry_32 |   -.090876   .0145021    -6.27   0.000    -.1192996   -.0624523
+      DCountry_31 |  -.1855137    .014515   -12.78   0.000    -.2139626   -.1570649
+      DCountry_30 |   .1116545    .010114    11.04   0.000     .0918313    .1314776
+      DCountry_29 |   .0199145   .0150284     1.33   0.185    -.0095405    .0493696
+      DCountry_28 |  -.1516934   .0120514   -12.59   0.000    -.1753137   -.1280732
+      DCountry_27 |   .1993419   .0101317    19.68   0.000     .1794841    .2191998
+      DCountry_26 |  -.1440153   .0116071   -12.41   0.000    -.1667649   -.1212658
+      DCountry_25 |   .1126352   .0133138     8.46   0.000     .0865406    .1387299
+      DCountry_24 |  -.0445607   .0115853    -3.85   0.000    -.0672675    -.021854
+      DCountry_23 |          0  (omitted)
+      DCountry_22 |   -.017299   .0110466    -1.57   0.117    -.0389499    .0043519
+      DCountry_21 |  -.2029647   .0132765   -15.29   0.000    -.2289862   -.1769432
+      DCountry_20 |   .0336505   .0185648     1.81   0.070    -.0027359    .0700369
+      DCountry_19 |   .0930542    .013453     6.92   0.000     .0666868    .1194216
+      DCountry_18 |   .1081066    .014428     7.49   0.000     .0798282     .136385
+      DCountry_17 |   .1462367   .0123924    11.80   0.000     .1219481    .1705254
+      DCountry_16 |  -.0065359   .0104083    -0.63   0.530    -.0269359     .013864
+      DCountry_15 |   -.085415   .0120963    -7.06   0.000    -.1091233   -.0617067
+      DCountry_14 |  -.0457646   .0107409    -4.26   0.000    -.0668163   -.0247129
+      DCountry_13 |   .2202259   .0110603    19.91   0.000     .1985482    .2419036
+      DCountry_12 |  -.0976573   .0116909    -8.35   0.000     -.120571   -.0747436
+      DCountry_11 |  -.0571478   .0169533    -3.37   0.001    -.0903757     -.02392
+      DCountry_10 |   .1022055   .0125596     8.14   0.000      .077589     .126822
+       DCountry_9 |    .098238   .0144025     6.82   0.000     .0700096    .1264664
+       DCountry_8 |  -.0866227   .0125905    -6.88   0.000    -.1112997   -.0619458
+       DCountry_7 |   .0856482   .0120722     7.09   0.000     .0619872    .1093093
+       DCountry_6 |  -.2078518   .0116725   -17.81   0.000    -.2307295   -.1849741
+       DCountry_5 |   .2530595    .010121    25.00   0.000     .2332226    .2728963
+       DCountry_4 |  -.0497324   .0118218    -4.21   0.000    -.0729028   -.0265621
+       DCountry_3 |   -.034503   .0110163    -3.13   0.002    -.0560947   -.0129114
+       DCountry_2 |   .0037458   .0131019     0.29   0.775    -.0219336    .0294251
+       DCountry_1 |          0  (omitted)
+            _cons |   1.800343   .0138147   130.32   0.000     1.773267    1.827419
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  6.1707954
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |    .061038      .00754    8.09   0.000   .046256   .07582   14.5692
+gut~3_sq |  -.0026748      .00025  -10.57   0.000  -.003171 -.002179   228.963
+ DWave_5*|  -.1200875      .03113   -3.86   0.000  -.181099 -.059076    .39326
+ DWave_4*|  -1.796563      .03142  -57.18   0.000  -1.85815 -1.73498   .005924
+ DWave_3*|  -.1339412      .03166   -4.23   0.000  -.195993 -.071889   .230475
+ DWave_2*|    -.09596      .03117   -3.08   0.002  -.157051 -.034868   .328905
+DCoun~80*|  -.3640831      .06774   -5.37   0.000  -.496855 -.231312   .014005
+DCoun~79*|  -.5934314      .06037   -9.83   0.000   -.71176 -.475103   .000172
+DCoun~78*|  -.5956897       .1043   -5.71   0.000  -.800118 -.391262   .003525
+DCoun~77*|  -.7301454      .06905  -10.57   0.000  -.865479 -.594812   .005479
+DCoun~76*|  -.6154918      .05994  -10.27   0.000  -.732967 -.498017   .013426
+DCoun~75*|   1.623765      .07515   21.61   0.000   1.47647  1.77106   .028564
+DCoun~74*|  -.8670438      .05836  -14.86   0.000  -.981421 -.752666   .020635
+DCoun~73*|   .5851562      .10416    5.62   0.000   .381002  .789311   .003977
+DCoun~72*|   -.322836      .05894   -5.48   0.000  -.438361 -.207311   .041188
+DCoun~71*|   -.901398      .07761  -11.61   0.000  -1.05351 -.749288   .006128
+DCoun~70*|   -.581305      .08514   -6.83   0.000   -.74817  -.41444   .006758
+DCoun~69*|   .1807622      .07592    2.38   0.017   .031967  .329557   .006344
+DCoun~68*|  -.7380552      .06476  -11.40   0.000  -.864981  -.61113   .010976
+DCoun~67*|   .7941058      .08941    8.88   0.000   .618862   .96935   .005918
+DCoun~66*|   2.233284      .08679   25.73   0.000   2.06317  2.40339   .012223
+DCoun~65*|   .2679056      .06973    3.84   0.000   .131236  .404576   .023919
+DCoun~64*|   1.021017      .07432   13.74   0.000   .875361  1.16667   .019897
+DCoun~63*|   .0912943      .06198    1.47   0.141  -.030179  .212768   .046711
+DCoun~62*|   .4300464      .07787    5.52   0.000    .27743  .582663   .011231
+DCoun~61*|   .5701271      .09622    5.93   0.000   .381532  .758722   .005148
+DCoun~59*|   .3263333      .07972    4.09   0.000   .170092  .482574   .012001
+DCoun~58*|  -.2195431      .07231   -3.04   0.002  -.361275 -.077811   .009716
+DCoun~57*|  -.6754807      .05942  -11.37   0.000  -.791945 -.559016   .022016
+DCoun~56*|  -.3046816      .06738   -4.52   0.000  -.436735 -.172629   .013191
+DCoun~55*|  -.0373032      .07512   -0.50   0.620  -.184545  .109938   .009475
+DCoun~54*|  -1.074969      .05532  -19.43   0.000  -1.18339  -.96655   .021488
+DCoun~53*|   .0664079      .06471    1.03   0.305  -.060427  .193242   .020406
+DCoun~52*|  -.8563531      .06324  -13.54   0.000  -.980304 -.732402   .015399
+DCoun~51*|   1.673957      .09095   18.41   0.000   1.49571  1.85221   .006917
+DCoun~50*|  -.1708988       .0606   -2.82   0.005  -.289664 -.052134   .037847
+DCoun~49*|    2.06722      .08899   23.23   0.000   1.89281  2.24163   .008711
+DCoun~48*|   1.069687      .08187   13.07   0.000   .909224  1.23015   .010289
+DCoun~47*|  -.9191856      .06373  -14.42   0.000  -1.04408 -.794287     .0116
+DCoun~46*|   .7612108      .10512    7.24   0.000   .555177  .967245   .004817
+DCoun~45*|  -.6486497      .06786   -9.56   0.000  -.781657 -.515643   .009901
+DCoun~44*|   .0654501      .06213    1.05   0.292  -.056326  .187226   .038503
+DCoun~43*|  -1.657105      .05445  -30.43   0.000  -1.76383 -1.55038   .008348
+DCoun~42*|   .3793729       .0785    4.83   0.000   .225508  .533237   .010531
+DCoun~41*|   .1487735       .1058    1.41   0.160  -.058588  .356135   .003519
+DCoun~40*|  -.5032058      .07243   -6.95   0.000  -.645166 -.361246   .009825
+DCoun~39*|  -.1248615      .09508   -1.31   0.189  -.311222  .061499    .00488
+DCoun~38*|   .3606828      .08595    4.20   0.000   .192226   .52914   .006032
+DCoun~37*|  -1.194206      .05545  -21.54   0.000  -1.30289 -1.08552   .015634
+DCoun~36*|   -1.51619      .05482  -27.66   0.000  -1.62363 -1.40875   .009545
+DCoun~35*|  -1.424981       .0546  -26.10   0.000  -1.53199 -1.31797    .01349
+DCoun~34*|   .5306438      .07101    7.47   0.000   .391466  .669821   .016156
+DCoun~32*|  -.5363462      .08189   -6.55   0.000   -.69685 -.375842   .006058
+DCoun~31*|  -1.045856      .07471  -14.00   0.000  -1.19229 -.899418    .00516
+DCoun~30*|    .725881      .06905   10.51   0.000   .590538  .861224   .037593
+DCoun~29*|   .1241115      .09457    1.31   0.189  -.061246  .309469   .003589
+DCoun~28*|  -.8698674      .06428  -13.53   0.000  -.995849 -.743885   .010149
+DCoun~27*|   1.355119      .07533   17.99   0.000   1.20747  1.50277   .022729
+DCoun~26*|  -.8297989       .0625  -13.28   0.000  -.952293 -.707305   .017912
+DCoun~25*|   .7352415      .09171    8.02   0.000   .555487  .914996   .005587
+DCoun~24*|  -.2691024      .06851   -3.93   0.000  -.403382 -.134823   .013661
+DCoun~22*|  -.1058575      .06705   -1.58   0.114  -.237279  .025564    .01473
+DCoun~21*|  -1.135281       .0673  -16.87   0.000  -1.26718 -1.00338   .007597
+DCoun~20*|   .2111703      .11844    1.78   0.075  -.020967  .443308   .001877
+DCoun~19*|   .6014838      .09092    6.62   0.000   .423287   .77968   .005351
+DCoun~18*|   .7040386      .09896    7.11   0.000   .510072  .898006   .006032
+DCoun~17*|   .9708305      .08817   11.01   0.000    .79802  1.14364   .006236
+DCoun~16*|  -.0402069      .06384   -0.63   0.529  -.165328  .084914   .024517
+DCoun~15*|  -.5057134      .06877   -7.35   0.000  -.640502 -.370924   .011994
+DCoun~14*|  -.2763778      .06353   -4.35   0.000  -.400887 -.151869   .026769
+DCoun~13*|   1.516543      .08435   17.98   0.000   1.35122  1.68187   .011014
+DCoun~12*|  -.5741357      .06555   -8.76   0.000  -.702611  -.44566   .000051
+DCoun~11*|  -.3428332      .09889   -3.47   0.001  -.536655 -.149012   .003729
+DCoun~10*|   .6635214      .08558    7.75   0.000    .49578  .831263   .007731
+DCoun~_9*|    .636689      .09786    6.51   0.000   .444884  .828495    .00469
+DCoun~_8*|  -.5124376      .07145   -7.17   0.000  -.652481 -.372394   .009093
+DCoun~_7*|   .5511693      .08088    6.81   0.000   .392642  .709696   .013591
+DCoun~_6*|  -1.161794      .05912  -19.65   0.000  -1.27767 -1.04591   .015367
+DCoun~_5*|   1.767749      .07923   22.31   0.000   1.61246  1.92304   .020495
+DCoun~_4*|   -.299632      .06958   -4.31   0.000  -.436004  -.16326   .016754
+DCoun~_3*|   -.209406       .0658   -3.18   0.001  -.338366 -.080446   .017447
+DCoun~_2*|   .0231569      .08114    0.29   0.775  -.135884  .182198   .009455
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01b.PoissonReg.tex
+dir : seeout
+
+. 
+. 
+end of do-file
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. 
+. *Basic Model-Polarized
+. display as text "***Model 03a"
+***Model 03a
+
+. poisson gutt_action_pol gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -70666.894  
+Iteration 1:   log pseudolikelihood = -70666.893  
+
+Poisson regression                              Number of obs     =     68,837
+                                                Wald chi2(2)      =     225.05
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -70666.893               Pseudo R2         =     0.0038
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+  gutt_action_pol |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |     .06383   .0110255     5.79   0.000     .0422203    .0854396
+gutt_instrust3_sq |  -.0031253   .0003826    -8.17   0.000    -.0038751   -.0023754
+            _cons |  -.9747477   .0763344   -12.77   0.000     -1.12436    -.825135
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  .46358136
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .0295904       .0051    5.81   0.000   .019603  .039578   14.6524
+gut~3_sq |  -.0014488      .00018   -8.21   0.000  -.001795 -.001103   233.351
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex
+dir : seeout
+
+. *Basic Model, Wave Effect
+. display as text "***Model 03a"
+***Model 03a
+
+. poisson gutt_action_pol gutt_instrust3 gutt_instrust3_sq $dwave, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -69567.148  
+Iteration 1:   log pseudolikelihood = -69510.173  
+Iteration 2:   log pseudolikelihood = -69510.047  
+Iteration 3:   log pseudolikelihood = -69510.044  
+Iteration 4:   log pseudolikelihood = -69510.044  
+
+Poisson regression                              Number of obs     =     68,837
+                                                Wald chi2(6)      =  281622.59
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -69510.044               Pseudo R2         =     0.0201
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+  gutt_action_pol |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0503421   .0109239     4.61   0.000     .0289317    .0717526
+gutt_instrust3_sq |   -.002547   .0003775    -6.75   0.000    -.0032869   -.0018071
+          DWave_5 |  -.6209023   .0382663   -16.23   0.000    -.6959029   -.5459016
+          DWave_4 |  -18.16167   .0491577  -369.46   0.000    -18.25802   -18.06532
+          DWave_3 |  -.2660096   .0390554    -6.81   0.000    -.3425569   -.1894624
+          DWave_2 |  -.1543115    .037931    -4.07   0.000    -.2286548   -.0799682
+          DWave_1 |          0  (omitted)
+            _cons |  -.5392185   .0854681    -6.31   0.000    -.7067328   -.3717041
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  .36075512
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .0181612      .00393    4.62   0.000    .01045  .025873   14.6524
+gut~3_sq |  -.0009188      .00014   -6.77   0.000  -.001185 -.000653   233.351
+ DWave_5*|  -.2195365      .01337  -16.43   0.000  -.245732 -.193341   .441841
+ DWave_4*|  -.4611994      .00382 -120.65   0.000  -.468692 -.453707   .013525
+ DWave_3*|   -.089486      .01226   -7.30   0.000  -.113508 -.065464   .226172
+ DWave_2*|  -.0538796      .01283   -4.20   0.000  -.079021 -.028738   .281883
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex, dec(3) tex label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03a.PoissonReg.tex
+dir : seeout
+
+. 
+. 
+. 
+. *Basic Model-Polarized, Wave Effect, Type Effect
+. display as text "***Model 03b"
+***Model 03b
+
+. poisson gutt_action_pol gutt_instrust3 gutt_instrust3_sq $dwave $dtype, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -69567.148  
+Iteration 1:   log pseudolikelihood = -69510.173  
+Iteration 2:   log pseudolikelihood = -69510.047  
+Iteration 3:   log pseudolikelihood = -69510.044  
+Iteration 4:   log pseudolikelihood = -69510.044  
+
+Poisson regression                              Number of obs     =     68,837
+                                                Wald chi2(6)      =  281622.59
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -69510.044               Pseudo R2         =     0.0201
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+  gutt_action_pol |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0503421   .0109239     4.61   0.000     .0289317    .0717526
+gutt_instrust3_sq |   -.002547   .0003775    -6.75   0.000    -.0032869   -.0018071
+          DWave_5 |  -.6209023   .0382663   -16.23   0.000    -.6959029   -.5459016
+          DWave_4 |  -18.16167   .0491577  -369.46   0.000    -18.25802   -18.06532
+          DWave_3 |  -.2660096   .0390554    -6.81   0.000    -.3425569   -.1894624
+          DWave_2 |  -.1543115    .037931    -4.07   0.000    -.2286548   -.0799682
+          DWave_1 |          0  (omitted)
+            _cons |  -.5392185   .0854681    -6.31   0.000    -.7067328   -.3717041
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  .36075512
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .0181612      .00393    4.62   0.000    .01045  .025873   14.6524
+gut~3_sq |  -.0009188      .00014   -6.77   0.000  -.001185 -.000653   233.351
+ DWave_5*|  -.2195365      .01337  -16.43   0.000  -.245732 -.193341   .441841
+ DWave_4*|  -.4611994      .00382 -120.65   0.000  -.468692 -.453707   .013525
+ DWave_3*|   -.089486      .01226   -7.30   0.000  -.113508 -.065464   .226172
+ DWave_2*|  -.0538796      .01283   -4.20   0.000  -.079021 -.028738   .281883
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model-Polarized, Wave Effect, Country Effect
+. display as text "***Model 03b"
+***Model 03b
+
+. poisson gutt_action_pol gutt_instrust3 gutt_instrust3_sq $dwave $dcountry , robust
+note: DWave_1 omitted because of collinearity
+note: DCountry_60 omitted because of collinearity
+note: DCountry_33 omitted because of collinearity
+note: DCountry_23 omitted because of collinearity
+note: DCountry_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -63598.906  
+Iteration 1:   log pseudolikelihood = -63224.104  
+Iteration 2:   log pseudolikelihood = -63208.173  
+Iteration 3:   log pseudolikelihood = -63204.512  
+Iteration 4:   log pseudolikelihood =  -63203.76  
+Iteration 5:   log pseudolikelihood = -63203.631  
+Iteration 6:   log pseudolikelihood = -63203.601  
+Iteration 7:   log pseudolikelihood = -63203.593  
+Iteration 8:   log pseudolikelihood = -63203.592  
+Iteration 9:   log pseudolikelihood = -63203.592  
+Iteration 10:  log pseudolikelihood = -63203.592  
+Iteration 11:  log pseudolikelihood = -63203.592  
+
+Poisson regression                              Number of obs     =     68,837
+                                                Wald chi2(82)     =  204755.20
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -63203.592               Pseudo R2         =     0.1090
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+  gutt_action_pol |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0022196   .0108228     0.21   0.838    -.0189926    .0234319
+gutt_instrust3_sq |   -.000539   .0003716    -1.45   0.147    -.0012674    .0001894
+          DWave_5 |  -.0650816   .0452861    -1.44   0.151    -.1538407    .0236774
+          DWave_4 |  -18.60594   .0622819  -298.74   0.000    -18.72801   -18.48387
+          DWave_3 |   .0047777   .0441609     0.11   0.914    -.0817762    .0913315
+          DWave_2 |    .033664   .0444459     0.76   0.449    -.0534484    .1207764
+          DWave_1 |          0  (omitted)
+      DCountry_80 |  -1.122932   .1217829    -9.22   0.000    -1.361622   -.8842423
+      DCountry_79 |  -1.267171    .213758    -5.93   0.000    -1.686129   -.8482135
+      DCountry_78 |  -.7756025   .1429499    -5.43   0.000    -1.055779   -.4954257
+      DCountry_77 |  -2.295463   .2139074   -10.73   0.000    -2.714714   -1.876213
+      DCountry_76 |    -.69427   .0995418    -6.97   0.000    -.8893684   -.4991715
+      DCountry_75 |   .4638067   .0850126     5.46   0.000     .2971851    .6304284
+      DCountry_74 |  -1.189494   .0993168   -11.98   0.000    -1.384151   -.9948363
+      DCountry_73 |  -.1957612   .1562015    -1.25   0.210    -.5019105    .1103882
+      DCountry_72 |  -.9992279   .0964475   -10.36   0.000    -1.188261   -.8101943
+      DCountry_71 |  -1.839093   .1637077   -11.23   0.000    -2.159954   -1.518232
+      DCountry_70 |  -1.631183   .1744887    -9.35   0.000    -1.973175   -1.289192
+      DCountry_69 |  -.0282327   .1100717    -0.26   0.798    -.2439694    .1875039
+      DCountry_68 |  -1.497254    .128711   -11.63   0.000    -1.749523   -1.244985
+      DCountry_67 |   .0895754   .0952129     0.94   0.347    -.0970383    .2761892
+      DCountry_66 |   .8052044    .089806     8.97   0.000     .6291879    .9812209
+      DCountry_65 |  -.2824753   .0928722    -3.04   0.002    -.4645016   -.1004491
+      DCountry_64 |  -.1060118   .1015114    -1.04   0.296    -.3049705    .0929469
+      DCountry_63 |  -.5224813   .0879235    -5.94   0.000    -.6948082   -.3501545
+      DCountry_62 |  -.8173791   .1278256    -6.39   0.000    -1.067913   -.5668456
+      DCountry_61 |   .0777135   .1203429     0.65   0.518    -.1581542    .3135812
+      DCountry_60 |          0  (omitted)
+      DCountry_59 |  -.5818941   .1149317    -5.06   0.000    -.8071561   -.3566321
+      DCountry_58 |  -2.049601     .20089   -10.20   0.000    -2.443338   -1.655863
+      DCountry_57 |  -1.335218   .1001692   -13.33   0.000    -1.531546    -1.13889
+      DCountry_56 |  -.9914476   .1210068    -8.19   0.000    -1.228617   -.7542786
+      DCountry_55 |  -.6842919   .1164821    -5.87   0.000    -.9125926   -.4559911
+      DCountry_54 |  -1.214695   .0977708   -12.42   0.000    -1.406322   -1.023068
+      DCountry_53 |  -.4068135   .0975497    -4.17   0.000    -.5980073   -.2156196
+      DCountry_52 |  -.9594884   .1016796    -9.44   0.000    -1.158777   -.7602001
+      DCountry_51 |   .5552093   .1032551     5.38   0.000     .3528331    .7575855
+      DCountry_50 |  -.5141751   .0865498    -5.94   0.000    -.6838097   -.3445405
+      DCountry_49 |   .6391132   .0919306     6.95   0.000     .4589326    .8192938
+      DCountry_48 |   .1984898   .1340324     1.48   0.139    -.0642089    .4611886
+      DCountry_47 |  -1.261483   .1117718   -11.29   0.000    -1.480552   -1.042415
+      DCountry_46 |  -.5966855   .1800579    -3.31   0.001    -.9495925   -.2437785
+      DCountry_45 |  -1.047113   .1202285    -8.71   0.000    -1.282756   -.8114691
+      DCountry_44 |  -.5404874   .0902059    -5.99   0.000    -.7172878   -.3636871
+      DCountry_43 |  -3.294538   .2537171   -12.99   0.000    -3.791815   -2.797262
+      DCountry_42 |  -.5880886   .1227792    -4.79   0.000    -.8287315   -.3474457
+      DCountry_41 |  -.9474463   .1730277    -5.48   0.000    -1.286574   -.6083183
+      DCountry_40 |   -.601236   .0981472    -6.13   0.000    -.7936009    -.408871
+      DCountry_39 |  -.9246087   .1732828    -5.34   0.000    -1.264237   -.5849806
+      DCountry_38 |  -.3111591   .1209038    -2.57   0.010    -.5481262    -.074192
+      DCountry_37 |  -1.617511   .1089576   -14.85   0.000    -1.831064   -1.403958
+      DCountry_36 |  -2.556605   .1739932   -14.69   0.000    -2.897625   -2.215584
+      DCountry_35 |  -1.874659   .1315632   -14.25   0.000    -2.132518     -1.6168
+      DCountry_34 |  -.5269249    .100104    -5.26   0.000    -.7231251   -.3307247
+      DCountry_33 |          0  (omitted)
+      DCountry_32 |  -1.261026   .1451262    -8.69   0.000    -1.545468   -.9765841
+      DCountry_31 |  -1.674843   .1755721    -9.54   0.000    -2.018958   -1.330728
+      DCountry_30 |   .0972232   .0877279     1.11   0.268    -.0747203    .2691668
+      DCountry_29 |  -.7129594   .1833332    -3.89   0.000    -1.072286   -.3536329
+      DCountry_28 |    -2.2655   .1600615   -14.15   0.000    -2.579215   -1.951785
+      DCountry_27 |   .3279992   .0910763     3.60   0.000     .1494929    .5065054
+      DCountry_26 |  -.7073562   .0930263    -7.60   0.000    -.8896845   -.5250279
+      DCountry_25 |  -.4091347   .1390095    -2.94   0.003    -.6815883    -.136681
+      DCountry_24 |  -1.314189   .1206026   -10.90   0.000    -1.550566   -1.077812
+      DCountry_23 |          0  (omitted)
+      DCountry_22 |  -.3975144   .0962226    -4.13   0.000    -.5861071   -.2089217
+      DCountry_21 |   -1.39739   .1411267    -9.90   0.000    -1.673993   -1.120786
+      DCountry_20 |  -.1295808   .2058732    -0.63   0.529     -.533085    .2739233
+      DCountry_19 |  -.0358545   .1348695    -0.27   0.790    -.3001938    .2284848
+      DCountry_18 |  -.0341747   .1209565    -0.28   0.778    -.2712451    .2028956
+      DCountry_17 |  -.4849911   .1565443    -3.10   0.002    -.7918124   -.1781698
+      DCountry_16 |  -.4273806    .093764    -4.56   0.000    -.6111546   -.2436065
+      DCountry_15 |   -2.43613   .1982699   -12.29   0.000    -2.824732   -2.047528
+      DCountry_14 |  -.4638892   .0904548    -5.13   0.000    -.6411773   -.2866012
+      DCountry_13 |   .5202101   .0877885     5.93   0.000     .3481478    .6922724
+      DCountry_12 |  -1.258366   .3658286    -3.44   0.001    -1.975377   -.5413548
+      DCountry_11 |  -1.246113    .212894    -5.85   0.000    -1.663377    -.828848
+      DCountry_10 |   .0023822   .1017113     0.02   0.981    -.1969682    .2017327
+       DCountry_9 |  -.3959592   .1591167    -2.49   0.013    -.7078222   -.0840963
+       DCountry_8 |  -1.062799   .1199209    -8.86   0.000     -1.29784   -.8277582
+       DCountry_7 |  -.1200346   .1021139    -1.18   0.240    -.3201742     .080105
+       DCountry_6 |  -1.358757   .1065012   -12.76   0.000    -1.567496   -1.150019
+       DCountry_5 |   .6520734   .0848038     7.69   0.000     .4858611    .8182857
+       DCountry_4 |  -.6126271   .0987552    -6.20   0.000    -.8061837   -.4190704
+       DCountry_3 |  -.4163242   .0929056    -4.48   0.000    -.5984158   -.2342326
+       DCountry_2 |  -.4044976   .1064393    -3.80   0.000    -.6131149   -.1958803
+       DCountry_1 |          0  (omitted)
+            _cons |  -.0295558   .1191819    -0.25   0.804     -.263148    .2040364
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  .28392583
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .0006302      .00307    0.21   0.837  -.005392  .006652   14.6524
+gut~3_sq |   -.000153      .00011   -1.45   0.147   -.00036  .000054   233.351
+ DWave_5*|  -.0184118      .01277   -1.44   0.149  -.043439  .006615   .441841
+ DWave_4*|  -.3651663      .00385  -94.90   0.000  -.372708 -.357624   .013525
+ DWave_3*|   .0013583      .01257    0.11   0.914   -.02328  .025997   .226172
+ DWave_2*|    .009629      .01281    0.75   0.452  -.015472   .03473   .281883
+DCoun~80*|    -.19481      .01188  -16.40   0.000  -.218096 -.171524   .014992
+DCoun~79*|   -.204066      .01724  -11.83   0.000  -.237864 -.170268   .000392
+DCoun~78*|  -.1538493      .01896   -8.11   0.000  -.191009  -.11669   .005462
+DCoun~77*|  -.2586381      .00688  -37.62   0.000  -.272113 -.245163   .005607
+DCoun~76*|  -.1432953      .01452   -9.87   0.000   -.17176 -.114831    .01184
+DCoun~75*|   .1665047      .03787    4.40   0.000   .092274  .240736   .013481
+DCoun~74*|  -.2045746      .00968  -21.13   0.000  -.223551 -.185598   .029563
+DCoun~73*|  -.0505064      .03651   -1.38   0.167  -.122074  .021062   .002717
+DCoun~72*|  -.1871865      .01136  -16.47   0.000  -.209461 -.164912    .04255
+DCoun~71*|  -.2428782      .00812  -29.89   0.000  -.258802 -.226954   .009225
+DCoun~70*|  -.2320112      .01032  -22.47   0.000  -.252246 -.211776   .009719
+DCoun~69*|  -.0079048      .03039   -0.26   0.795  -.067472  .051663    .00385
+DCoun~68*|  -.2247073      .00892  -25.18   0.000  -.242199 -.207216   .012929
+DCoun~67*|   .0265936      .02952    0.90   0.368  -.031271  .084458   .005462
+DCoun~66*|   .3499066      .05654    6.19   0.000   .239095  .460719   .004794
+DCoun~65*|  -.0703257      .02019   -3.48   0.000  -.109898 -.030753   .023025
+DCoun~64*|  -.0285898      .02599   -1.10   0.271  -.079532  .022353   .010198
+DCoun~63*|  -.1182253      .01567   -7.54   0.000  -.148939 -.087512   .043901
+DCoun~62*|  -.1596131      .01638   -9.74   0.000  -.191723 -.127503   .008193
+DCoun~61*|    .022938       .0369    0.62   0.534  -.049387  .095263    .00385
+DCoun~59*|  -.1260473      .01855   -6.79   0.000  -.162406 -.089688   .010808
+DCoun~58*|  -.2517513      .00807  -31.18   0.000  -.267576 -.235926   .008585
+DCoun~57*|  -.2172857      .00864  -25.16   0.000  -.234216 -.200356   .028313
+DCoun~56*|  -.1807388      .01328  -13.61   0.000  -.206758  -.15472    .01213
+DCoun~55*|  -.1415124        .017   -8.32   0.000  -.174832 -.108192   .008411
+DCoun~54*|  -.2079814      .00944  -22.03   0.000  -.226482 -.189481    .03363
+DCoun~53*|  -.0954217      .01873   -5.10   0.000  -.132125 -.058718   .013554
+DCoun~52*|  -.1791322      .01184  -15.13   0.000  -.202334  -.15593   .023389
+DCoun~51*|   .2104336      .05087    4.14   0.000   .110738  .310129   .002789
+DCoun~50*|  -.1166063      .01551   -7.52   0.000  -.147014 -.086199   .041576
+DCoun~49*|   .2533736      .04912    5.16   0.000     .1571  .349647   .004213
+DCoun~48*|   .0623034      .04634    1.34   0.179  -.028531  .153138   .002847
+DCoun~47*|  -.2082203       .0098  -21.25   0.000   -.22743 -.189011   .018144
+DCoun~46*|  -.1278325       .0283   -4.52   0.000  -.183299 -.072366   .003225
+DCoun~45*|  -.1865072       .0125  -14.92   0.000  -.211006 -.162009   .011462
+DCoun~44*|  -.1204463      .01556   -7.74   0.000  -.150936 -.089956   .029374
+DCoun~43*|  -.2881476      .00415  -69.39   0.000  -.296286 -.280009   .015951
+DCoun~42*|  -.1268152      .01962   -6.46   0.000  -.165267 -.088363   .007772
+DCoun~41*|  -.1743569      .01928   -9.04   0.000  -.212154  -.13656   .003138
+DCoun~40*|  -.1294423       .0157   -8.24   0.000  -.160217 -.098668   .014789
+DCoun~39*|  -.1721057       .0198   -8.69   0.000  -.210917 -.133294   .005099
+DCoun~38*|  -.0760228      .02526   -3.01   0.003  -.125528 -.026517   .004242
+DCoun~37*|  -.2366392      .00731  -32.38   0.000  -.250964 -.222315   .024086
+DCoun~36*|   -.272925      .00512  -53.34   0.000  -.282954 -.262896   .016125
+DCoun~35*|   -.252618      .00702  -35.96   0.000  -.266386  -.23885   .026512
+DCoun~34*|  -.1168943      .01707   -6.85   0.000  -.150354 -.083435    .00982
+DCoun~32*|  -.2054117      .01216  -16.90   0.000  -.229241 -.181583   .007525
+DCoun~31*|  -.2337134      .00992  -23.57   0.000  -.253152 -.214275   .007656
+DCoun~30*|   .0289146       .0273    1.06   0.290   -.02459   .08242   .027006
+DCoun~29*|  -.1449804      .02567   -5.65   0.000  -.195296 -.094664   .002252
+DCoun~28*|  -.2621708      .00581  -45.15   0.000  -.273551  -.25079   .013176
+DCoun~27*|   .1098553      .03563    3.08   0.002   .040023  .179688   .010009
+DCoun~26*|  -.1471319      .01383  -10.64   0.000   -.17423 -.120034   .030754
+DCoun~25*|  -.0954736      .02634   -3.62   0.000  -.147102 -.043845   .003545
+DCoun~24*|  -.2114737      .00991  -21.34   0.000  -.230894 -.192053   .013931
+DCoun~22*|  -.0936547      .01864   -5.02   0.000  -.130186 -.057123   .014106
+DCoun~21*|  -.2172048      .01055  -20.59   0.000  -.237882 -.196528   .011549
+DCoun~20*|  -.0345117      .05137   -0.67   0.502  -.135196  .066173   .000988
+DCoun~19*|  -.0100008      .03696   -0.27   0.787  -.082432   .06243   .003022
+DCoun~18*|   -.009541      .03321   -0.29   0.774  -.074622   .05554   .005637
+DCoun~17*|   -.109255      .02749   -3.97   0.000  -.163131 -.055379   .002702
+DCoun~16*|  -.0995953      .01776   -5.61   0.000  -.134407 -.064783   .020062
+DCoun~15*|  -.2681404        .006  -44.72   0.000  -.279893 -.256388   .014106
+DCoun~14*|  -.1069276      .01675   -6.38   0.000  -.139753 -.074103   .031349
+DCoun~13*|   .1929813      .04156    4.64   0.000   .111519  .274444   .007598
+DCoun~12*|  -.2032871       .0296   -6.87   0.000  -.261296 -.145278   .000116
+DCoun~11*|  -.2032907       .0177  -11.48   0.000  -.237985 -.168597   .004068
+DCoun~10*|   .0006772      .02895    0.02   0.981  -.056057  .057411   .006552
+DCoun~_9*|  -.0929479      .03051   -3.05   0.002  -.152748 -.033148   .003094
+DCoun~_8*|  -.1878668      .01227  -15.32   0.000  -.211908 -.163825   .010242
+DCoun~_7*|  -.0321641       .0258   -1.25   0.213  -.082735  .018407   .012755
+DCoun~_6*|  -.2188302      .00887  -24.66   0.000  -.236221 -.201439   .026948
+DCoun~_5*|   .2590225      .04548    5.70   0.000   .169892  .348154   .012101
+DCoun~_4*|  -.1318059      .01575   -8.37   0.000  -.162682  -.10093   .021776
+DCoun~_3*|  -.0974212      .01776   -5.49   0.000  -.132222  -.06262   .018188
+DCoun~_2*|  -.0948793      .02041   -4.65   0.000  -.134878  -.05488   .010982
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex, dec(3) tex label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\03b.PoissonReg.tex
+dir : seeout
+
+. 
+. 
+. 
+. 
+. 
+. *Basic Model-Grouped
+. display as text "***Model 03a"
+***Model 03a
+
+. poisson gutt_action_gr gutt_instrust3 gutt_instrust3_sq, robust
+
+Iteration 0:   log pseudolikelihood = -278453.03  
+Iteration 1:   log pseudolikelihood = -278453.02  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(2)      =    1034.99
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -278453.02               Pseudo R2         =     0.0030
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+   gutt_action_gr |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0961023   .0035031    27.43   0.000     .0892363    .1029683
+gutt_instrust3_sq |  -.0035778   .0001196   -29.90   0.000    -.0038123   -.0033433
+            _cons |  -.0543665   .0248723    -2.19   0.029    -.1031153   -.0056177
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  1.6931383
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1627144      .00589   27.61   0.000   .151165  .174264   14.5692
+gut~3_sq |  -.0060577       .0002  -30.14   0.000  -.006452 -.005664   228.963
+------------------------------------------------------------------------------
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)')
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex
+dir : seeout
+
+. *Basic Model-Grouped, Wave Effect
+. display as text "***Model 03a"
+***Model 03a
+
+. poisson gutt_action_gr gutt_instrust3 gutt_instrust3_sq $dwave, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -276689.17  
+Iteration 1:   log pseudolikelihood =  -276476.1  
+Iteration 2:   log pseudolikelihood = -276476.07  
+Iteration 3:   log pseudolikelihood = -276476.06  
+Iteration 4:   log pseudolikelihood = -276476.06  
+Iteration 5:   log pseudolikelihood = -276476.06  
+Iteration 6:   log pseudolikelihood = -276476.06  
+Iteration 7:   log pseudolikelihood = -276476.06  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  394848.86
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -276476.06               Pseudo R2         =     0.0101
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+   gutt_action_gr |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |    .089117   .0034898    25.54   0.000     .0822771    .0959569
+gutt_instrust3_sq |  -.0032615   .0001191   -27.39   0.000    -.0034949   -.0030282
+          DWave_5 |  -.1553032   .0104494   -14.86   0.000    -.1757837   -.1348227
+          DWave_4 |  -20.68706   .0343376  -602.46   0.000    -20.75436   -20.61976
+          DWave_3 |  -.1349599   .0107204   -12.59   0.000    -.1559714   -.1139483
+          DWave_2 |   -.029985    .010277    -2.92   0.004    -.0501275   -.0098425
+          DWave_1 |          0  (omitted)
+            _cons |     .08189   .0267767     3.06   0.002     .0294086    .1343713
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  1.5051392
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1341335      .00522   25.68   0.000   .123896  .144371   14.5692
+gut~3_sq |  -.0049091      .00018  -27.56   0.000  -.005258  -.00456   228.963
+ DWave_5*|  -.2301411      .01522  -15.12   0.000  -.259969 -.200313    .39326
+ DWave_4*|  -1.701372      .00385 -442.32   0.000  -1.70891 -1.69383   .005924
+ DWave_3*|  -.1960259      .01502  -13.05   0.000  -.225462  -.16659   .230475
+ DWave_2*|  -.0449023      .01531   -2.93   0.003  -.074913 -.014892   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex, dec(3) tex label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05a.PoissonReg.tex
+dir : seeout
+
+. 
+. 
+. 
+. *Basic Model-Grouped, Wave Effect, Type Effect
+. display as text "***Model 03b"
+***Model 03b
+
+. poisson gutt_action_gr gutt_instrust3 gutt_instrust3_sq $dwave $dtype, robust
+note: DWave_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -276689.17  
+Iteration 1:   log pseudolikelihood =  -276476.1  
+Iteration 2:   log pseudolikelihood = -276476.07  
+Iteration 3:   log pseudolikelihood = -276476.06  
+Iteration 4:   log pseudolikelihood = -276476.06  
+Iteration 5:   log pseudolikelihood = -276476.06  
+Iteration 6:   log pseudolikelihood = -276476.06  
+Iteration 7:   log pseudolikelihood = -276476.06  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(6)      =  394848.86
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -276476.06               Pseudo R2         =     0.0101
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+   gutt_action_gr |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |    .089117   .0034898    25.54   0.000     .0822771    .0959569
+gutt_instrust3_sq |  -.0032615   .0001191   -27.39   0.000    -.0034949   -.0030282
+          DWave_5 |  -.1553032   .0104494   -14.86   0.000    -.1757837   -.1348227
+          DWave_4 |  -20.68706   .0343376  -602.46   0.000    -20.75436   -20.61976
+          DWave_3 |  -.1349599   .0107204   -12.59   0.000    -.1559714   -.1139483
+          DWave_2 |   -.029985    .010277    -2.92   0.004    -.0501275   -.0098425
+          DWave_1 |          0  (omitted)
+            _cons |     .08189   .0267767     3.06   0.002     .0294086    .1343713
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  1.5051392
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .1341335      .00522   25.68   0.000   .123896  .144371   14.5692
+gut~3_sq |  -.0049091      .00018  -27.56   0.000  -.005258  -.00456   228.963
+ DWave_5*|  -.2301411      .01522  -15.12   0.000  -.259969 -.200313    .39326
+ DWave_4*|  -1.701372      .00385 -442.32   0.000  -1.70891 -1.69383   .005924
+ DWave_3*|  -.1960259      .01502  -13.05   0.000  -.225462  -.16659   .230475
+ DWave_2*|  -.0449023      .01531   -2.93   0.003  -.074913 -.014892   .328905
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex, dec(3) tex replace label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex
+dir : seeout
+
+. 
+. *Basic Model-Grouped, Wave Effect, Country Effect
+. display as text "***Model 03b"
+***Model 03b
+
+. poisson gutt_action_gr gutt_instrust3 gutt_instrust3_sq $dwave $dcountry , robust
+note: DWave_1 omitted because of collinearity
+note: DCountry_60 omitted because of collinearity
+note: DCountry_33 omitted because of collinearity
+note: DCountry_23 omitted because of collinearity
+note: DCountry_1 omitted because of collinearity
+
+Iteration 0:   log pseudolikelihood = -260953.76  
+Iteration 1:   log pseudolikelihood = -260760.79  
+Iteration 2:   log pseudolikelihood = -260728.01  
+Iteration 3:   log pseudolikelihood = -260719.99  
+Iteration 4:   log pseudolikelihood = -260718.13  
+Iteration 5:   log pseudolikelihood = -260717.73  
+Iteration 6:   log pseudolikelihood = -260717.65  
+Iteration 7:   log pseudolikelihood = -260717.63  
+Iteration 8:   log pseudolikelihood = -260717.62  
+Iteration 9:   log pseudolikelihood = -260717.62  
+Iteration 10:  log pseudolikelihood = -260717.62  
+Iteration 11:  log pseudolikelihood = -260717.62  
+Iteration 12:  log pseudolikelihood = -260717.62  
+
+Poisson regression                              Number of obs     =    157,158
+                                                Wald chi2(82)     =  329799.92
+                                                Prob > chi2       =     0.0000
+Log pseudolikelihood = -260717.62               Pseudo R2         =     0.0665
+
+-----------------------------------------------------------------------------------
+                  |               Robust
+   gutt_action_gr |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+------------------+----------------------------------------------------------------
+   gutt_instrust3 |   .0465082   .0034091    13.64   0.000     .0398265      .05319
+gutt_instrust3_sq |  -.0018017    .000116   -15.54   0.000     -.002029   -.0015744
+          DWave_5 |  -.0313096   .0118965    -2.63   0.008    -.0546263   -.0079929
+          DWave_4 |  -19.90392   .0400473  -497.01   0.000    -19.98241   -19.82543
+          DWave_3 |  -.0543157   .0122981    -4.42   0.000    -.0784195   -.0302119
+          DWave_2 |  -.0294261   .0119262    -2.47   0.014     -.052801   -.0060511
+          DWave_1 |          0  (omitted)
+      DCountry_80 |  -.0843479   .0301236    -2.80   0.005    -.1433891   -.0253068
+      DCountry_79 |  -.4006073   .1975375    -2.03   0.043    -.7877737   -.0134409
+      DCountry_78 |  -.3627141   .0584599    -6.20   0.000    -.4772934   -.2481348
+      DCountry_77 |   -.227399   .0416829    -5.46   0.000     -.309096    -.145702
+      DCountry_76 |  -.2616639   .0275877    -9.48   0.000    -.3157347    -.207593
+      DCountry_75 |   .4728101   .0220077    21.48   0.000     .4296757    .5159445
+      DCountry_74 |  -.4863779   .0306886   -15.85   0.000    -.5465265   -.4262293
+      DCountry_73 |   .2944345   .0345825     8.51   0.000     .2266539     .362215
+      DCountry_72 |  -.0797385     .02418    -3.30   0.001    -.1271304   -.0323466
+      DCountry_71 |  -.4446945   .0499038    -8.91   0.000    -.5425043   -.3468848
+      DCountry_70 |  -.2745123   .0458878    -5.98   0.000    -.3644507   -.1845739
+      DCountry_69 |   .1421225   .0287254     4.95   0.000     .0858217    .1984233
+      DCountry_68 |  -.3218167   .0340796    -9.44   0.000    -.3886114   -.2550219
+      DCountry_67 |   .1779514    .029531     6.03   0.000     .1200716    .2358311
+      DCountry_66 |   .5989201   .0225974    26.50   0.000       .55463    .6432101
+      DCountry_65 |   .0859045   .0250533     3.43   0.001      .036801     .135008
+      DCountry_64 |   .4111058   .0232088    17.71   0.000     .3656173    .4565943
+      DCountry_63 |   .0560439   .0231386     2.42   0.015      .010693    .1013947
+      DCountry_62 |   .2438896   .0272438     8.95   0.000     .1904927    .2972865
+      DCountry_61 |   .2456455   .0313805     7.83   0.000     .1841408    .3071501
+      DCountry_60 |          0  (omitted)
+      DCountry_59 |   .1493349   .0283655     5.26   0.000     .0937396    .2049303
+      DCountry_58 |   .0994115   .0318123     3.12   0.002     .0370604    .1617625
+      DCountry_57 |  -.3167016   .0288069   -10.99   0.000    -.3731621   -.2602411
+      DCountry_56 |  -.0779307   .0286985    -2.72   0.007    -.1341788   -.0216826
+      DCountry_55 |   .0196451   .0301981     0.65   0.515    -.0395421    .0788322
+      DCountry_54 |  -.6750281   .0322686   -20.92   0.000    -.7382733   -.6117829
+      DCountry_53 |   .0908052   .0241871     3.75   0.000     .0433994     .138211
+      DCountry_52 |  -.5598805    .034538   -16.21   0.000    -.6275738   -.4921872
+      DCountry_51 |   .4880034   .0244034    20.00   0.000     .4401736    .5358332
+      DCountry_50 |  -.0945873     .02407    -3.93   0.000    -.1417637   -.0474109
+      DCountry_49 |   .5261448   .0236053    22.29   0.000     .4798794    .5724103
+      DCountry_48 |   .4246318   .0246361    17.24   0.000     .3763459    .4729177
+      DCountry_47 |  -.5437377   .0389398   -13.96   0.000    -.6200584   -.4674171
+      DCountry_46 |   .3337203   .0325188    10.26   0.000     .2699846     .397456
+      DCountry_45 |  -.3036532   .0337622    -8.99   0.000    -.3698259   -.2374805
+      DCountry_44 |   .0710171   .0232659     3.05   0.002     .0254169    .1166174
+      DCountry_43 |   -1.33259   .0706945   -18.85   0.000    -1.471149   -1.194032
+      DCountry_42 |   .2316999   .0275564     8.41   0.000     .1776903    .2857095
+      DCountry_41 |    .089732   .0410838     2.18   0.029     .0092092    .1702547
+      DCountry_40 |  -.3534536   .0362962    -9.74   0.000    -.4245929   -.2823144
+      DCountry_39 |   .0165926   .0406992     0.41   0.684    -.0631764    .0963616
+      DCountry_38 |   .1595599   .0301003     5.30   0.000     .1005645    .2185554
+      DCountry_37 |  -.7553022   .0362965   -20.81   0.000     -.826442   -.6841624
+      DCountry_36 |  -1.098599   .0517019   -21.25   0.000    -1.199933   -.9972655
+      DCountry_35 |  -1.246499   .0551016   -22.62   0.000    -1.354497   -1.138502
+      DCountry_34 |   .2309691   .0245715     9.40   0.000     .1828098    .2791284
+      DCountry_33 |          0  (omitted)
+      DCountry_32 |  -.2410914   .0421464    -5.72   0.000    -.3236968   -.1584861
+      DCountry_31 |   -.574749   .0537219   -10.70   0.000     -.680042   -.4694559
+      DCountry_30 |   .2812169   .0229181    12.27   0.000     .2362983    .3261355
+      DCountry_29 |   .1367869   .0365352     3.74   0.000     .0651791    .2083947
+      DCountry_28 |  -.3467793    .038008    -9.12   0.000    -.4212737   -.2722849
+      DCountry_27 |   .4141967   .0224828    18.42   0.000     .3701312    .4582622
+      DCountry_26 |  -.5887678   .0339463   -17.34   0.000    -.6553014   -.5222343
+      DCountry_25 |   .2899307   .0294988     9.83   0.000     .2321141    .3477474
+      DCountry_24 |  -.0638338   .0295751    -2.16   0.031    -.1217999   -.0058678
+      DCountry_23 |          0  (omitted)
+      DCountry_22 |  -.1160385   .0268643    -4.32   0.000    -.1686916   -.0633854
+      DCountry_21 |  -.7011254   .0467238   -15.01   0.000    -.7927025   -.6095484
+      DCountry_20 |   .1404461   .0405375     3.46   0.001      .060994    .2198982
+      DCountry_19 |   .3211522   .0295893    10.85   0.000     .2631582    .3791462
+      DCountry_18 |   .2649532   .0323341     8.19   0.000     .2015795    .3283269
+      DCountry_17 |   .4261989   .0272851    15.62   0.000     .3727211    .4796767
+      DCountry_16 |   .0181809   .0245619     0.74   0.459    -.0299595    .0663213
+      DCountry_15 |  -.0865702   .0340421    -2.54   0.011    -.1532914   -.0198489
+      DCountry_14 |  -.1855134    .026112    -7.10   0.000    -.2366919   -.1343349
+      DCountry_13 |   .4078946   .0243141    16.78   0.000     .3602397    .4555494
+      DCountry_12 |   -.388632   .3566613    -1.09   0.276    -1.087675    .3104114
+      DCountry_11 |  -.0620966   .0472744    -1.31   0.189    -.1547527    .0305596
+      DCountry_10 |    .206155   .0287819     7.16   0.000     .1497436    .2625664
+       DCountry_9 |    .349674   .0324324    10.78   0.000     .2861076    .4132404
+       DCountry_8 |  -.2426698   .0343055    -7.07   0.000    -.3099073   -.1754324
+       DCountry_7 |   .2362976   .0271063     8.72   0.000     .1831703    .2894249
+       DCountry_6 |  -.8311502   .0401403   -20.71   0.000    -.9098237   -.7524766
+       DCountry_5 |   .4657353   .0224519    20.74   0.000     .4217303    .5097402
+       DCountry_4 |  -.1938075   .0299125    -6.48   0.000    -.2524349     -.13518
+       DCountry_3 |  -.1151015   .0268466    -4.29   0.000    -.1677198   -.0624832
+       DCountry_2 |   .0025507   .0322447     0.08   0.937    -.0606476    .0657491
+       DCountry_1 |          0  (omitted)
+            _cons |   .2921643   .0345609     8.45   0.000     .2244262    .3599025
+-----------------------------------------------------------------------------------
+
+. mfx
+
+Marginal effects after poisson
+      y  = Predicted number of events (predict)
+         =  1.4113791
+------------------------------------------------------------------------------
+variable |      dy/dx    Std. Err.     z    P>|z|  [    95% C.I.   ]      X
+---------+--------------------------------------------------------------------
+gutt_i~3 |   .0656408       .0048   13.67   0.000   .056228  .075054   14.5692
+gut~3_sq |  -.0025429      .00016  -15.57   0.000  -.002863 -.002223   228.963
+ DWave_5*|   -.044044      .01668   -2.64   0.008  -.076734 -.011354    .39326
+ DWave_4*|  -1.588004      .00406 -391.49   0.000  -1.59595 -1.58005   .005924
+ DWave_3*|  -.0755552      .01686   -4.48   0.000  -.108605 -.042505   .230475
+ DWave_2*|  -.0413243      .01667   -2.48   0.013   -.07399 -.008658   .328905
+DCoun~80*|  -.1142994      .03918   -2.92   0.004    -.1911 -.037498   .014005
+DCoun~79*|  -.4659098      .18681   -2.49   0.013   -.83205 -.099769   .000172
+DCoun~78*|  -.4299116      .05758   -7.47   0.000  -.542765 -.317058   .003525
+DCoun~77*|  -.2874283      .04702   -6.11   0.000  -.379582 -.195275   .005479
+DCoun~76*|  -.3260858      .03027  -10.77   0.000  -.385414 -.266757   .013426
+DCoun~75*|   .8417292      .04837   17.40   0.000   .746919  .936539   .028564
+DCoun~74*|  -.5490768      .02727  -20.13   0.000   -.60253 -.495624   .020635
+DCoun~73*|   .4826441       .0653    7.39   0.000    .35466  .610628   .003977
+DCoun~72*|  -.1085271      .03174   -3.42   0.001  -.170736 -.046318   .041188
+DCoun~71*|  -.5080393      .04542  -11.18   0.000  -.597066 -.419013   .006128
+DCoun~70*|   -.339441      .04941   -6.87   0.000  -.436291 -.242591   .006758
+DCoun~69*|   .2153486       .0466    4.62   0.000   .124013  .306684   .006344
+DCoun~68*|  -.3897419      .03517  -11.08   0.000  -.458669 -.320815   .010976
+DCoun~67*|   .2746011      .04964    5.53   0.000   .177307  .371895   .005918
+DCoun~66*|   1.149102      .05694   20.18   0.000   1.03749  1.26071   .012223
+DCoun~65*|    .126344      .03835    3.29   0.001   .051175  .201513   .023919
+DCoun~64*|   .7118186      .04849   14.68   0.000   .616785  .806852   .019897
+DCoun~63*|   .0811449      .03434    2.36   0.018    .01383   .14846   .046711
+DCoun~62*|   .3887615      .04874    7.98   0.000   .293236  .484287   .011231
+DCoun~61*|   .3924966      .05642    6.96   0.000   .281921  .503072   .005148
+DCoun~59*|   .2269123      .04629    4.90   0.000   .136192  .317632   .012001
+DCoun~58*|   .1473759      .04948    2.98   0.003   .050398  .244353   .009716
+DCoun~57*|  -.3858022       .0301  -12.82   0.000  -.444807 -.326798   .022016
+DCoun~56*|   -.105922      .03757   -2.82   0.005  -.179548 -.032296   .013191
+DCoun~55*|   .0279956      .04345    0.64   0.519  -.057157  .113148   .009475
+DCoun~54*|  -.7029086        .024  -29.28   0.000  -.749955 -.655863   .021488
+DCoun~53*|   .1339112      .03721    3.60   0.000   .060979  .206843   .020406
+DCoun~52*|  -.6103294      .02842  -21.48   0.000   -.66603 -.554629   .015399
+DCoun~51*|    .884851      .05553   15.94   0.000   .776019  .993683   .006917
+DCoun~50*|  -.1278362      .03116   -4.10   0.000  -.188905 -.066767   .037847
+DCoun~49*|   .9727636      .05563   17.48   0.000   .863722  1.08181   .008711
+DCoun~48*|    .743403      .05253   14.15   0.000   .640452  .846354   .010289
+DCoun~47*|  -.5957143      .03238  -18.40   0.000  -.659171 -.532257     .0116
+DCoun~46*|   .5582234      .06379    8.75   0.000   .433191  .683256   .004817
+DCoun~45*|  -.3707293      .03544  -10.46   0.000   -.44019 -.301269   .009901
+DCoun~44*|   .1035933      .03504    2.96   0.003   .034917  .172269   .038503
+DCoun~43*|  -1.050691      .02696  -38.98   0.000  -1.10352 -.997859   .008348
+DCoun~42*|    .367108      .04874    7.53   0.000   .271589  .462627   .010531
+DCoun~41*|   .1324599      .06337    2.09   0.037   .008247  .256673   .003519
+DCoun~40*|  -.4216878      .03629  -11.62   0.000  -.492808 -.350568   .009825
+DCoun~39*|   .0236119      .05839    0.40   0.686  -.090835  .138059    .00488
+DCoun~38*|    .243926      .04969    4.91   0.000   .146533  .341319   .006032
+DCoun~37*|   -.757104      .02478  -30.55   0.000  -.805676 -.708532   .015634
+DCoun~36*|  -.9508313      .02496  -38.09   0.000  -.999758 -.901905   .009545
+DCoun~35*|  -1.022646      .02321  -44.06   0.000  -1.06814 -.977153    .01349
+DCoun~34*|   .3653391      .04329    8.44   0.000    .28049  .450188   .016156
+DCoun~32*|   -.302802      .04691   -6.46   0.000   -.39474 -.210864   .006058
+DCoun~31*|  -.6188225      .04297  -14.40   0.000  -.703036 -.534609    .00516
+DCoun~30*|   .4535128      .04189   10.83   0.000   .371414  .535612   .037593
+DCoun~29*|   .2067838      .05904    3.50   0.000   .091075  .322492   .003589
+DCoun~28*|  -.4150468      .03824  -10.86   0.000  -.489987 -.340107   .010149
+DCoun~27*|   .7174696      .04698   15.27   0.000   .625395  .809544   .022729
+DCoun~26*|   -.634707      .02725  -23.29   0.000  -.688112 -.581302   .017912
+DCoun~25*|   .4739278      .05537    8.56   0.000   .365397  .582459   .005587
+DCoun~24*|  -.0873546      .03924   -2.23   0.026  -.164266 -.010443   .013661
+DCoun~22*|  -.1548939      .03391   -4.57   0.000  -.221363 -.088425    .01473
+DCoun~21*|  -.7150963      .03314  -21.58   0.000  -.780053 -.650139   .007597
+DCoun~20*|   .2127616      .06577    3.23   0.001   .083851  .341672   .001877
+DCoun~19*|   .5335932      .05729    9.31   0.000   .421314  .645872   .005351
+DCoun~18*|   .4274863      .05922    7.22   0.000    .31141  .543563   .006032
+DCoun~17*|   .7480519      .05852   12.78   0.000   .633348  .862756   .006236
+DCoun~16*|   .0258833      .03526    0.73   0.463  -.043235  .095001   .024517
+DCoun~15*|  -.1171656      .04416   -2.65   0.008  -.203723 -.030608   .011994
+DCoun~14*|  -.2401677      .03097   -7.75   0.000   -.30087 -.179466   .026769
+DCoun~13*|   .7076527      .05099   13.88   0.000   .607722  .807583   .011014
+DCoun~12*|   -.454496      .34131   -1.33   0.183  -1.12344  .214453   .000051
+DCoun~11*|  -.0849958      .06274   -1.35   0.176  -.207963  .037972   .003729
+DCoun~10*|   .3226117       .0497    6.49   0.000   .225211  .420013   .007731
+DCoun~_9*|   .5898423      .06464    9.12   0.000   .463146  .716539    .00469
+DCoun~_8*|  -.3047809      .03819   -7.98   0.000   -.37964 -.229922   .009093
+DCoun~_7*|   .3749985       .0481    7.80   0.000   .280726  .469271   .013591
+DCoun~_6*|  -.8068959      .02541  -31.76   0.000  -.856691 -.757101   .015367
+DCoun~_5*|   .8292557      .04937   16.80   0.000   .732494  .926018   .020495
+DCoun~_4*|  -.2494704      .03504   -7.12   0.000  -.318148 -.180793   .016754
+DCoun~_3*|  -.1537597      .03394   -4.53   0.000  -.220283 -.087237   .017447
+DCoun~_2*|   .0036046      .04562    0.08   0.937  -.085816  .093025   .009455
+------------------------------------------------------------------------------
+(*) dy/dx is for discrete change of dummy variable from 0 to 1
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex, dec(3) tex label ///
+> addstat( Wald Chi2, `e(chi2)', Prob>Chi2, `e(p)',Pseudo R-squared, `e(r2_p)') 
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex
+dir : seeout
+
+. outreg2 using D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex, dec(3) tex ctitle(ME) label mfx
+D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\05b.PoissonReg.tex
+dir : seeout
+
+. 
+end of do-file
+
+. do "C:\Users\RENMA~1.DES\AppData\Local\Temp\STD01000000.tmp"
+
+. log close
+      name:  <unnamed>
+       log:  D:\Dropbox\_My_Research\Protests-Adil\FirstCase-Paper\04.Res\_Outputs\Regs\01.Outputs.txt
+  log type:  text
+ closed on:  16 Sep 2017, 16:10:36
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------

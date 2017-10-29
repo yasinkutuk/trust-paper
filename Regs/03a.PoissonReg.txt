@@ -1,0 +1,26 @@
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	Political Action Polarized-Guttman	ME	Political Action Polarized-Guttman	ME
+					
+gutt_instrust3	Political Trust-Guttman-Imputed	0.064***	0.030***	0.050***	0.018***
+		(0.011)	(0.005)	(0.011)	(0.004)
+gutt_instrust3_sq	Squared Political Trust	-0.003***	-0.001***	-0.003***	-0.001***
+		(0.000)	(0.000)	(0.000)	(0.000)
+DWave_5	W.2010-2014			-0.621***	-0.220***
+				(0.038)	(0.013)
+DWave_4	W.2005-2009			-18.162***	-0.461***
+				(0.049)	(0.004)
+DWave_3	W.1999-2004			-0.266***	-0.089***
+				(0.039)	(0.012)
+DWave_2	W.1994-1998			-0.154***	-0.054***
+				(0.038)	(0.013)
+o.DWave_1	W.1989-1993 = o,			-	
+					
+Constant	Constant	-0.975***		-0.539***	
+		(0.076)		(0.085)	
+					
+Observations		68,837	68,837	68,837	68,837
+Wald Chi2		225		281623	
+Prob>Chi2		0		0	
+Pseudo R-squared		0.00377		0.0201	
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					

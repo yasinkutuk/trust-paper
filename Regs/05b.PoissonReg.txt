@@ -1,0 +1,186 @@
+		(1)	(2)	(3)	(4)
+VARIABLES	LABELS	Political Action Mean-Guttman	ME	Political Action Mean-Guttman	ME
+					
+gutt_instrust3	Political Trust-Guttman-Imputed	0.089***	0.134***	0.047***	0.066***
+		(0.003)	(0.005)	(0.003)	(0.005)
+gutt_instrust3_sq	Squared Political Trust	-0.003***	-0.005***	-0.002***	-0.003***
+		(0.000)	(0.000)	(0.000)	(0.000)
+DWave_5	W.2010-2014	-0.155***	-0.230***	-0.031***	-0.044***
+		(0.010)	(0.015)	(0.012)	(0.017)
+DWave_4	W.2005-2009	-20.687***	-1.701***	-19.904***	-1.588***
+		(0.034)	(0.004)	(0.040)	(0.004)
+DWave_3	W.1999-2004	-0.135***	-0.196***	-0.054***	-0.076***
+		(0.011)	(0.015)	(0.012)	(0.017)
+DWave_2	W.1994-1998	-0.030***	-0.045***	-0.029**	-0.041**
+		(0.010)	(0.015)	(0.012)	(0.017)
+o.DWave_1	W.1989-1993 = o,	-		-	
+					
+DCountry_80	Zimbabwe			-0.084***	-0.114***
+				(0.030)	(0.039)
+DCountry_79	Zambia			-0.401**	-0.466**
+				(0.198)	(0.187)
+DCountry_78	Yemen			-0.363***	-0.430***
+				(0.058)	(0.058)
+DCountry_77	Viet Nam			-0.227***	-0.287***
+				(0.042)	(0.047)
+DCountry_76	Venezuela			-0.262***	-0.326***
+				(0.028)	(0.030)
+DCountry_75	United States			0.473***	0.842***
+				(0.022)	(0.048)
+DCountry_74	Ukraine			-0.486***	-0.549***
+				(0.031)	(0.027)
+DCountry_73	Uganda			0.294***	0.483***
+				(0.035)	(0.065)
+DCountry_72	Turkey			-0.080***	-0.109***
+				(0.024)	(0.032)
+DCountry_71	Tunisia			-0.445***	-0.508***
+				(0.050)	(0.045)
+DCountry_70	Thailand			-0.275***	-0.339***
+				(0.046)	(0.049)
+DCountry_69	Tanzania			0.142***	0.215***
+				(0.029)	(0.047)
+DCountry_68	Taiwan			-0.322***	-0.390***
+				(0.034)	(0.035)
+DCountry_67	Switzerland			0.178***	0.275***
+				(0.030)	(0.050)
+DCountry_66	Sweden			0.599***	1.149***
+				(0.023)	(0.057)
+DCountry_65	Spain			0.086***	0.126***
+				(0.025)	(0.038)
+DCountry_64	South Korea			0.411***	0.712***
+				(0.023)	(0.048)
+DCountry_63	South Africa			0.056**	0.081**
+				(0.023)	(0.034)
+DCountry_62	Slovenia			0.244***	0.389***
+				(0.027)	(0.049)
+DCountry_61	Slovakia			0.246***	0.392***
+				(0.031)	(0.056)
+o.DCountry_60	Singapore = o,			-	
+					
+DCountry_59	Serbia			0.149***	0.227***
+				(0.028)	(0.046)
+DCountry_58	Rwanda			0.099***	0.147***
+				(0.032)	(0.049)
+DCountry_57	Russia			-0.317***	-0.386***
+				(0.029)	(0.030)
+DCountry_56	Romania			-0.078***	-0.106***
+				(0.029)	(0.038)
+DCountry_55	Poland			0.020	0.028
+				(0.030)	(0.043)
+DCountry_54	Philippines			-0.675***	-0.703***
+				(0.032)	(0.024)
+DCountry_53	Peru			0.091***	0.134***
+				(0.024)	(0.037)
+DCountry_52	Pakistan			-0.560***	-0.610***
+				(0.035)	(0.028)
+DCountry_51	Norway			0.488***	0.885***
+				(0.024)	(0.056)
+DCountry_50	Nigeria			-0.095***	-0.128***
+				(0.024)	(0.031)
+DCountry_49	New Zealand			0.526***	0.973***
+				(0.024)	(0.056)
+DCountry_48	Netherlands			0.425***	0.743***
+				(0.025)	(0.053)
+DCountry_47	Morocco			-0.544***	-0.596***
+				(0.039)	(0.032)
+DCountry_46	Montenegro			0.334***	0.558***
+				(0.033)	(0.064)
+DCountry_45	Moldova			-0.304***	-0.371***
+				(0.034)	(0.035)
+DCountry_44	Mexico			0.071***	0.104***
+				(0.023)	(0.035)
+DCountry_43	Malaysia			-1.333***	-1.051***
+				(0.071)	(0.027)
+DCountry_42	Macedonia			0.232***	0.367***
+				(0.028)	(0.049)
+DCountry_41	Lithuania			0.090**	0.132**
+				(0.041)	(0.063)
+DCountry_40	Libya			-0.353***	-0.422***
+				(0.036)	(0.036)
+DCountry_39	Lebanon			0.017	0.024
+				(0.041)	(0.058)
+DCountry_38	Latvia			0.160***	0.244***
+				(0.030)	(0.050)
+DCountry_37	Kyrgyzstan			-0.755***	-0.757***
+				(0.036)	(0.025)
+DCountry_36	Kazakhstan			-1.099***	-0.951***
+				(0.052)	(0.025)
+DCountry_35	Jordan			-1.246***	-1.023***
+				(0.055)	(0.023)
+DCountry_34	Japan			0.231***	0.365***
+				(0.025)	(0.043)
+o.DCountry_33	Israel = o,			-	
+					
+DCountry_32	Iraq			-0.241***	-0.303***
+				(0.042)	(0.047)
+DCountry_31	Indonesia			-0.575***	-0.619***
+				(0.054)	(0.043)
+DCountry_30	India			0.281***	0.454***
+				(0.023)	(0.042)
+DCountry_29	Hungary			0.137***	0.207***
+				(0.037)	(0.059)
+DCountry_28	Ghana			-0.347***	-0.415***
+				(0.038)	(0.038)
+DCountry_27	Germany			0.414***	0.717***
+				(0.022)	(0.047)
+DCountry_26	Georgia			-0.589***	-0.635***
+				(0.034)	(0.027)
+DCountry_25	Finland			0.290***	0.474***
+				(0.029)	(0.055)
+DCountry_24	Estonia			-0.064**	-0.087**
+				(0.030)	(0.039)
+o.DCountry_23	El Salvador = o,			-	
+					
+DCountry_22	Egypt			-0.116***	-0.155***
+				(0.027)	(0.034)
+DCountry_21	Ecuador			-0.701***	-0.715***
+				(0.047)	(0.033)
+DCountry_20	Dominican Rep.			0.140***	0.213***
+				(0.041)	(0.066)
+DCountry_19	Czech Rep.			0.321***	0.534***
+				(0.030)	(0.057)
+DCountry_18	Cyprus			0.265***	0.427***
+				(0.032)	(0.059)
+DCountry_17	Croatia			0.426***	0.748***
+				(0.027)	(0.059)
+DCountry_16	Colombia			0.018	0.026
+				(0.025)	(0.035)
+DCountry_15	China			-0.087**	-0.117***
+				(0.034)	(0.044)
+DCountry_14	Chile			-0.186***	-0.240***
+				(0.026)	(0.031)
+DCountry_13	Canada			0.408***	0.708***
+				(0.024)	(0.051)
+DCountry_12	Burkina Faso			-0.389	-0.454
+				(0.357)	(0.341)
+DCountry_11	Bulgaria			-0.062	-0.085
+				(0.047)	(0.063)
+DCountry_10	Brazil			0.206***	0.323***
+				(0.029)	(0.050)
+DCountry_9	Bosnia			0.350***	0.590***
+				(0.032)	(0.065)
+DCountry_8	Belarus			-0.243***	-0.305***
+				(0.034)	(0.038)
+DCountry_7	Bangladesh			0.236***	0.375***
+				(0.027)	(0.048)
+DCountry_6	Azerbaijan			-0.831***	-0.807***
+				(0.040)	(0.025)
+DCountry_5	Australia			0.466***	0.829***
+				(0.022)	(0.049)
+DCountry_4	Armenia			-0.194***	-0.249***
+				(0.030)	(0.035)
+DCountry_3	Argentina			-0.115***	-0.154***
+				(0.027)	(0.034)
+DCountry_2	Algeria			0.003	0.004
+				(0.032)	(0.046)
+o.DCountry_1	Albania = o,			-	
+					
+Constant	Constant	0.082***		0.292***	
+		(0.027)		(0.035)	
+					
+Observations		157,158	157,158	157,158	157,158
+Wald Chi2		394849		329800	
+Prob>Chi2		0		0	
+Pseudo R-squared		0.0101		0.0665	
+Robust standard errors in parentheses					
+*** p<0.01, ** p<0.05, * p<0.1					
